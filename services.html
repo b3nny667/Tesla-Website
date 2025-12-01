@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tesla Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900 scroll-smooth">
+    <script src="script.js" defer></script>
+    
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <!-- Tesla Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <img src="https://www.tesla.com/tesla_theme/assets/img/_vehicle_redesign/logo.svg" alt="Tesla" class="h-6">
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-sm font-medium hover:text-gray-600">Vehicles</a>
+                    <a href="services.html" class="text-sm font-medium hover:text-gray-600">Services</a>
+                    <a href="about.html" class="text-sm font-medium hover:text-gray-600">About</a>
+                    <a href="contact.html" class="text-sm font-medium hover:text-gray-600">Contact</a>
+                </div>
+                
+                <!-- Right Menu -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="#" class="text-sm font-medium hover:text-gray-600">Shop</a>
+                    <a href="#" class="text-sm font-medium hover:text-gray-600">Account</a>
+                    <a href="#" class="text-sm font-medium hover:text-gray-600">Menu</a>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-500 hover:text-gray-900">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-16 h-screen bg-[url('https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Service-Hero-Desktop.jpg')] bg-cover bg-center text-white">
+        <div class="h-full flex flex-col justify-center items-center text-center">
+            <h1 class="text-5xl font-bold mb-6">Tesla Services</h1>
+            <p class="text-xl max-w-2xl">Premium care for your Tesla</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">Our Services</h2>
+                <p class="text-lg max-w-3xl mx-auto">Tesla offers a variety of service options to keep your vehicle running at its best</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="text-center">
+                    <div class="h-16 mb-4 flex items-center justify-center">
+                        <i class="fas fa-tools text-4xl text-red-500"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Service Centers</h3>
+                    <p class="text-gray-600">Visit one of our service centers for comprehensive vehicle maintenance and repairs.</p>
+                    <a href="contact.html" class="inline-block mt-4 text-red-600 hover:text-red-700 font-medium">Find a Center</a>
+                </div>
+                
+                <div class="text-center">
+                    <div class="h-16 mb-4 flex items-center justify-center">
+                        <i class="fas fa-truck text-4xl text-red-500"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Mobile Service</h3>
+                    <p class="text-gray-600">Our technicians come to you for most repairs and maintenance needs.</p>
+                    <a href="#" class="inline-block mt-4 text-red-600 hover:text-red-700 font-medium">Schedule Service</a>
+                </div>
+                
+                <div class="text-center">
+                    <div class="h-16 mb-4 flex items-center justify-center">
+                        <i class="fas fa-shield-alt text-4xl text-red-500"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Extended Warranty</h3>
+                    <p class="text-gray-600">Extend your vehicle's warranty coverage for additional peace of mind.</p>
+                    <a href="#" class="inline-block mt-4 text-red-600 hover:text-red-700 font-medium">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scheduling Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold mb-6">Schedule Service</h2>
+                    <p class="text-lg mb-8">Schedule service through the Tesla app or your Tesla Account</p>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-red-100 flex items-center justify-center mr-4">
+                                <i class="fas fa-mobile-alt text-red-600"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-1">Tesla App</h3>
+                                <p class="text-gray-600">Schedule and manage service appointments directly from your phone</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-red-100 flex items-center justify-center mr-4">
+                                <i class="fas fa-laptop text-red-600"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-1">Tesla Account</h3>
+                                <p class="text-gray-600">Log in to your Tesla Account to schedule service online</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <img src="https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Service-Scheduling.jpg" alt="Tesla Service Scheduling" class="rounded-lg shadow-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Maintenance Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">Maintenance Plans</h2>
+                <p class="text-lg max-w-3xl mx-auto">Keep your Tesla performing at its best with our maintenance plans</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="border border-gray-200 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold mb-4">Basic</h3>
+                    <p class="text-gray-600 mb-6">Essential maintenance to keep your vehicle running smoothly</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Tire rotation</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Cabin air filter replacement</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Brake fluid test</span>
+                        </li>
+                    </ul>
+                    <p class="text-2xl font-bold">$200<span class="text-lg font-normal text-gray-600">/year</span></p>
+                </div>
+                
+                <div class="border-2 border-red-500 rounded-lg p-6 relative">
+                    <div class="absolute top-0 right-0 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-bl-lg">POPULAR</div>
+                    <h3 class="text-xl font-semibold mb-4">Enhanced</h3>
+                    <p class="text-gray-600 mb-6">Comprehensive maintenance for optimal performance</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>All Basic services</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Wiper blade replacement</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>HVAC system service</span>
+                        </li>
+                    </ul>
+                    <p class="text-2xl font-bold">$350<span class="text-lg font-normal text-gray-600">/year</span></p>
+                </div>
+                
+                <div class="border border-gray-200 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold mb-4">Premium</h3>
+                    <p class="text-gray-600 mb-6">Complete care package for your Tesla</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>All Enhanced services</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>24/7 Roadside Assistance</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Annual vehicle inspection</span>
+                        </li>
+                    </ul>
+                    <p class="text-2xl font-bold">$500<span class="text-lg font-normal text-gray-600">/year</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-sm font-semibold mb-4 uppercase">Tesla</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-sm hover:underline">Privacy & Legal</a></li>
+                        <li><a href="#" class="text-sm hover:underline">Vehicle Recalls</a></li>
+                        <li><a href="contact.html" class="text-sm hover:underline">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold mb-4 uppercase">Vehicles</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-sm hover:underline">Model S</a></li>
+                        <li><a href="index.html" class="text-sm hover:underline">Model 3</a></li>
+                        <li><a href="index.html" class="text-sm hover:underline">Model X</a></li>
+                        <li><a href="index.html" class="text-sm hover:underline">Model Y</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold mb-4 uppercase">Energy</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-sm hover:underline">Solar Panels</a></li>
+                        <li><a href="index.html" class="text-sm hover:underline">Solar Roof</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold mb-4 uppercase">Company</h3>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-sm hover:underline">About</a></li>
+                        <li><a href="#" class="text-sm hover:underline">Careers</a></li>
+                        <li><a href="#" class="text-sm hover:underline">Investor Relations</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-sm text-gray-400">
+                <p>Tesla © 2023</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-black/90 z-50 hidden">
+        <div class="flex justify-end p-6">
+            <button id="close-menu" class="text-white text-2xl">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="flex flex-col items-center justify-center h-full space-y-8">
+            <a href="index.html" class="text-white text-xl hover:text-gray-300">Vehicles</a>
+            <a href="services.html" class="text-white text-xl hover:text-gray-300">Services</a>
+            <a href="about.html" class="text-white text-xl hover:text-gray-300">About</a>
+            <a href="contact.html" class="text-white text-xl hover:text-gray-300">Contact</a>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenu = document.getElementById('close-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Smooth scrolling for all links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    mobileMenu.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

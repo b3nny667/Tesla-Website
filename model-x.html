@@ -1,0 +1,1649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model X | Tesla</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* REMOVED ALL NAVBAR STYLING - Using only style.css for navbar */
+        
+        :root {
+            --tesla-red: #e31837;
+            --tesla-dark: #171a20;
+            --tesla-light: #f4f4f4;
+            --tesla-gray: #5c5e62;
+            --tesla-blue: #3457b1;
+            --primary-color: #e31837;
+            --secondary-color: #171a20;
+            --accent-color: #ff6b6b;
+            --gradient-primary: linear-gradient(135deg, #e31837 0%, #ff6b6b 100%);
+            --gradient-secondary: linear-gradient(135deg, #171a20 0%, #2a2a2a 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #000;
+            color: white;
+            overflow-x: hidden;
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* Color Themes */
+        body.color-pearl-white {
+            --primary-color: #ffffff;
+            --secondary-color: #2a2a2a;
+            --accent-color: #e0e0e0;
+            --gradient-primary: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+            --gradient-secondary: linear-gradient(135deg, #2a2a2a 0%, #3a3a3a 100%);
+            background: #0a0a0a;
+        }
+
+        body.color-solid-black {
+            --primary-color: #000000;
+            --secondary-color: #1a1a1a;
+            --accent-color: #333333;
+            --gradient-primary: linear-gradient(135deg, #000000 0%, #333333 100%);
+            --gradient-secondary: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            background: #000000;
+        }
+
+        body.color-midnight-silver {
+            --primary-color: #5f5f5f;
+            --secondary-color: #2a2a2a;
+            --accent-color: #7a7a7a;
+            --gradient-primary: linear-gradient(135deg, #5f5f5f 0%, #7a7a7a 100%);
+            --gradient-secondary: linear-gradient(135deg, #2a2a2a 0%, #3a3a3a 100%);
+            background: #1a1a1a;
+        }
+
+        body.color-deep-blue {
+            --primary-color: #1e3a5f;
+            --secondary-color: #0f1f3a;
+            --accent-color: #2a4a7a;
+            --gradient-primary: linear-gradient(135deg, #1e3a5f 0%, #2a4a7a 100%);
+            --gradient-secondary: linear-gradient(135deg, #0f1f3a 0%, #1a2a4a 100%);
+            background: #0a1428;
+        }
+
+        body.color-ultra-red {
+            --primary-color: #c90000;
+            --secondary-color: #1a0000;
+            --accent-color: #ff1a1a;
+            --gradient-primary: linear-gradient(135deg, #c90000 0%, #ff1a1a 100%);
+            --gradient-secondary: linear-gradient(135deg, #1a0000 0%, #2a0000 100%);
+            background: #0a0000;
+        }
+
+        .navbar {
+            position: fixed;
+            width: 100%;
+            background: rgba(23, 26, 32, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            transition: all 0.5s ease;
+        }
+
+        /* Enhanced Hero Section */
+        .model-x-hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), 
+                        url('https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Model-X-Exterior-Hero-Desktop-LHD.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 120px 0 80px 0;
+            color: white;
+            text-align: center;
+            position: relative;
+            transition: all 1.5s ease-in-out;
+        }
+
+        .hero-content h1 {
+            font-size: 5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 50px;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.15);
+            border-color: var(--primary-color);
+        }
+
+        .stat-value {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.8;
+            font-weight: 500;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .hero-btn {
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            padding: 12px 60px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            min-width: 250px;
+            text-align: center;
+            border: 2px solid transparent;
+        }
+
+        .btn-dark {
+            background: var(--primary-color);
+            color: white !important;
+        }
+
+        .btn-dark:hover {
+            background: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .btn-light {
+            background: rgba(255, 255, 255, 0.65);
+            color: var(--secondary-color);
+        }
+
+        .btn-light:hover {
+            background: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        /* Color Customizer Enhanced */
+        .color-customizer {
+            position: fixed;
+            top: 50%;
+            right: 30px;
+            transform: translateY(-50%);
+            background: rgba(23, 26, 32, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 25px 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            z-index: 1000;
+            border: 1px solid rgba(255,255,255,0.1);
+            display: none;
+        }
+
+        .color-customizer.active {
+            display: block;
+            animation: slideInRight 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .color-option {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin: 15px 0;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .color-option.active {
+            border-color: var(--primary-color);
+            transform: scale(1.2);
+            box-shadow: 0 0 20px var(--primary-color);
+        }
+
+        .color-tooltip {
+            position: absolute;
+            left: -140px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary-color);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+        }
+
+        .color-option:hover .color-tooltip {
+            opacity: 1;
+            transform: translateY(-50%) translateX(-5px);
+        }
+
+        /* 3D Configurator */
+        .configurator-section {
+            padding: 150px 20px;
+            background: var(--gradient-secondary);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.8s ease;
+        }
+
+        .configurator-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .configurator-display {
+            position: relative;
+            height: 600px;
+            background: radial-gradient(circle at center, var(--secondary-color) 0%, #000 100%);
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+            border: 2px solid var(--primary-color);
+            transition: all 0.5s ease;
+        }
+
+        .configurator-display::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 0%, var(--primary-color) 100%);
+            opacity: 0.1;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Enhanced Car Display - FIXED IMAGES */
+        .car-image-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+        }
+
+        .car-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            opacity: 0;
+            transform: scale(0.8) rotateY(180deg);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            filter: brightness(1.1) contrast(1.1);
+        }
+
+        .car-image.active {
+            opacity: 1;
+            transform: scale(1) rotateY(0deg);
+            animation: carReveal 1.2s ease-out;
+        }
+
+        @keyframes carReveal {
+            0% {
+                opacity: 0;
+                transform: scale(0.7) rotateY(-90deg);
+                filter: blur(10px);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1.05) rotateY(0deg);
+                filter: blur(5px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotateY(0deg);
+                filter: blur(0px);
+            }
+        }
+
+        @keyframes carRotate {
+            0% {
+                transform: perspective(1000px) rotateY(-5deg);
+            }
+            50% {
+                transform: perspective(1000px) rotateY(5deg);
+            }
+            100% {
+                transform: perspective(1000px) rotateY(-5deg);
+            }
+        }
+
+        .car-image.active:hover {
+            animation: carRotate 6s ease-in-out infinite;
+        }
+
+        /* Loading Animation */
+        .car-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 10;
+        }
+
+        .car-overlay.loading {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .loading-animation {
+            text-align: center;
+            color: white;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top: 3px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-animation span {
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        /* Color-specific image enhancements */
+        .car-image[data-color="pearl-white"] {
+            filter: brightness(1.2) contrast(1.1) saturate(1.1);
+        }
+
+        .car-image[data-color="solid-black"] {
+            filter: brightness(0.9) contrast(1.2) saturate(1.1);
+        }
+
+        .car-image[data-color="midnight-silver"] {
+            filter: brightness(1.1) contrast(1.1) saturate(1.05);
+        }
+
+        .car-image[data-color="deep-blue"] {
+            filter: brightness(1.1) contrast(1.15) saturate(1.2);
+        }
+
+        .car-image[data-color="ultra-red"] {
+            filter: brightness(1.15) contrast(1.2) saturate(1.3);
+        }
+
+        /* Enhanced configurator display with reflection */
+        .configurator-display::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40%;
+            background: linear-gradient(transparent 0%, rgba(0,0,0,0.8) 100%);
+            pointer-events: none;
+            z-index: 2;
+            border-radius: 0 0 30px 30px;
+        }
+
+        .configurator-options {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .config-option {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .config-option:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: var(--primary-color);
+            transform: translateX(10px);
+        }
+
+        .option-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .option-choices {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .option-choice {
+            padding: 15px 20px;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid transparent;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 140px;
+        }
+
+        .option-choice i {
+            margin-right: 8px;
+            font-size: 0.9em;
+        }
+
+        .option-choice.active {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .option-choice:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Enhanced option choices with color preview */
+        .option-choice[data-color="pearl-white"] {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.2) 100%);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .option-choice[data-color="solid-black"] {
+            background: linear-gradient(135deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.3) 100%);
+            border: 2px solid rgba(0,0,0,0.5);
+        }
+
+        .option-choice[data-color="midnight-silver"] {
+            background: linear-gradient(135deg, rgba(95,95,95,0.1) 0%, rgba(95,95,95,0.3) 100%);
+            border: 2px solid rgba(95,95,95,0.5);
+        }
+
+        .option-choice[data-color="deep-blue"] {
+            background: linear-gradient(135deg, rgba(30,58,95,0.1) 0%, rgba(30,58,95,0.3) 100%);
+            border: 2px solid rgba(30,58,95,0.5);
+        }
+
+        .option-choice[data-color="ultra-red"] {
+            background: linear-gradient(135deg, rgba(201,0,0,0.1) 0%, rgba(201,0,0,0.3) 100%);
+            border: 2px solid rgba(201,0,0,0.5);
+        }
+
+        .option-choice.active[data-color="pearl-white"] {
+            background: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
+        }
+
+        .option-choice.active[data-color="solid-black"] {
+            background: #000000;
+            color: #ffffff;
+            border-color: #000000;
+        }
+
+        .option-choice.active[data-color="midnight-silver"] {
+            background: #5f5f5f;
+            color: #ffffff;
+            border-color: #5f5f5f;
+        }
+
+        .option-choice.active[data-color="deep-blue"] {
+            background: #1e3a5f;
+            color: #ffffff;
+            border-color: #1e3a5f;
+        }
+
+        .option-choice.active[data-color="ultra-red"] {
+            background: #c90000;
+            color: #ffffff;
+            border-color: #c90000;
+        }
+
+        /* Performance Meter */
+        .performance-section {
+            padding: 150px 20px;
+            background: url('https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Model-X-Performance-Desktop-LHD.jpg') center/cover;
+            position: relative;
+        }
+
+        .performance-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-primary);
+            opacity: 0.9;
+        }
+
+        .performance-meter {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .meter-value {
+            font-size: 6rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff, #e0e0e0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .meter-label {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .meter-bar {
+            height: 8px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 50px 0;
+        }
+
+        .meter-progress {
+            height: 100%;
+            background: var(--gradient-primary);
+            border-radius: 10px;
+            width: 0%;
+            transition: width 2s ease-in-out;
+        }
+
+        /* Tech Specs Grid */
+        .tech-specs-section {
+            padding: 150px 20px;
+            background: var(--gradient-secondary);
+            transition: all 0.8s ease;
+        }
+
+        .specs-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .spec-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+            backdrop-filter: blur(10px);
+            padding: 50px 40px;
+            border-radius: 25px;
+            border: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .spec-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .spec-card:hover::before {
+            left: 100%;
+        }
+
+        .spec-card:hover {
+            transform: translateY(-15px);
+            border-color: var(--primary-color);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .spec-icon {
+            font-size: 4rem;
+            margin-bottom: 30px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Interactive Gallery */
+        .interactive-gallery {
+            padding: 150px 20px;
+            background: #000;
+            transition: all 0.8s ease;
+        }
+
+        body.color-pearl-white .interactive-gallery {
+            background: #0a0a0a;
+        }
+
+        body.color-solid-black .interactive-gallery {
+            background: #000000;
+        }
+
+        body.color-midnight-silver .interactive-gallery {
+            background: #1a1a1a;
+        }
+
+        body.color-deep-blue .interactive-gallery {
+            background: #0a1428;
+        }
+
+        body.color-ultra-red .interactive-gallery {
+            background: #0a0000;
+        }
+
+        .gallery-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .gallery-tab {
+            padding: 18px 35px;
+            background: rgba(255,255,255,0.05);
+            border: 2px solid transparent;
+            border-radius: 25px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-tab.active {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            transform: scale(1.05);
+        }
+
+        .gallery-content {
+            display: none;
+        }
+
+        .gallery-content.active {
+            display: block;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 400px;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 30px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        /* Customize Button */
+        .customize-btn {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 18px 30px;
+            border-radius: 30px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.1rem;
+            border: 2px solid transparent;
+        }
+
+        .customize-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+            border-color: rgba(255,255,255,0.3);
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 80px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: all 0.8s ease;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 30px 24px;
+            text-align: center;
+            background-color: #000;
+            font-size: 12px;
+            color: #5c5e62;
+            border-top: 1px solid #333;
+        }
+
+        .footer-links-container {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links-container a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        .footer-links-container a:hover {
+            color: #ffffff;
+        }
+
+        /* Animations */
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px) translateY(-50%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0) translateY(-50%);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+            
+            .configurator-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .meter-value {
+                font-size: 4rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            
+            .stat-value {
+                font-size: 2.5rem;
+            }
+            
+            .color-customizer {
+                right: 15px;
+                padding: 20px 15px;
+            }
+            
+            .customize-btn {
+                bottom: 20px;
+                right: 20px;
+                padding: 15px 25px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-header {
+                font-size: 2.5rem;
+            }
+            
+            .option-choices {
+                flex-direction: column;
+            }
+            
+            .option-choice {
+                min-width: 100%;
+            }
+            
+            .configurator-display {
+                height: 400px;
+            }
+            
+            .car-image {
+                object-position: center 30%;
+            }
+            
+            .loading-spinner {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .loading-animation span {
+                font-size: 1rem;
+            }
+        }
+        /* FIX FOR CAR IMAGE POSITIONING */
+.configurator-display {
+    position: relative;
+    height: 600px;
+    background: radial-gradient(circle at center, var(--secondary-color) 0%, #000 100%);
+    border-radius: 30px;
+    overflow: hidden !important; /* CRITICAL: Keep images contained */
+    box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+    border: 2px solid var(--primary-color);
+}
+
+.car-image-container {
+    position: absolute !important; /* FIX: Absolute positioning within container */
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 5;
+}
+
+.car-image {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 90% !important;
+    height: 90% !important;
+    object-fit: contain !important;
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.car-image.active {
+    opacity: 1;
+    display: block !important;
+}
+
+/* HIDE images from flowing in normal document flow */
+.car-image:not(.active) {
+    display: none !important;
+}
+
+/* Interior image styling */
+.interior-image {
+    object-fit: cover !important;
+}
+    </style>
+</head>
+<body class="scroll-smooth">
+    <!-- Navigation - Using EXACT same navbar as index.html -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-content">
+                
+                <div class="nav-logo">
+                    <a href="index.html">
+                        <img src="/img/logo.png" alt="Tesla Logo" class="logo-img">
+                    </a>
+                </div>
+                
+                <div class="desktop-menu">
+                    
+                    <div class="dropdown-item">
+                        <a href="#" class="nav-link">Vehicles</a>
+                        
+                        <div class="dropdown-content">
+                            <div class="dropdown-panel-inner">
+                                <a href="model-s.html" class="dropdown-link">
+                                    <img src="/img/avif/model s avif.avif" alt="Model S" class="vehicle-img">
+                                    <span class="vehicle-name">Model S</span>
+                                </a>
+                                <a href="model-3.html" class="dropdown-link">
+                                    <img src="/img/avif/model 3 avif.avif" alt="Model 3" class="vehicle-img">
+                                    <span class="vehicle-name">Model 3</span>
+                                </a>
+                                <a href="model-x.html" class="dropdown-link">
+                                    <img src="/img/avif/model x avif.avif" alt="Model X" class="vehicle-img">
+                                    <span class="vehicle-name">Model X</span>
+                                </a>
+                                <a href="model-y.html" class="dropdown-link">
+                                    <img src="/img/avif/model y avif.avif" alt="Model Y" class="vehicle-img">
+                                    <span class="vehicle-name">Model Y</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="solar-roof.html" class="nav-link">Solar Roof</a>
+                    <a href="solar-panels.html" class="nav-link">Solar Panels</a>
+                    <a href="shop.html" class="nav-link">Shop</a>
+                </div>
+                
+                <div class="nav-actions">
+                    <a href="account.html" class="nav-link nav-icon-link"><i class="fas fa-user-circle"></i></a>
+                    <button class="menu-btn" id="mobile-menu-button">Menu</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+        <button class="close-btn" id="close-menu"><i class="fas fa-times"></i></button>
+        <div class="mobile-menu-links">
+            <a href="model-s.html">Model S</a>
+            <a href="model-3.html">Model 3</a>
+            <a href="model-x.html">Model X</a>
+            <a href="model-y.html">Model Y</a>
+            <a href="solar-roof.html">Solar Roof</a>
+            <a href="solar-panels.html">Solar Panels</a>
+            <a href="shop.html">Shop</a>
+            <a href="account.html">Account</a>
+            <div class="mobile-menu-divider"></div>
+            <a href="services.html">Services</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="test-drive.html">Demo Drive</a>
+        </div>
+    </div>
+
+    <!-- Color Customizer -->
+    <div class="color-customizer" id="colorCustomizer">
+        <div class="color-option active" data-color="pearl-white" data-theme="color-pearl-white" style="background: #FFFFFF;">
+            <span class="color-tooltip">Pearl White Multi-Coat</span>
+        </div>
+        <div class="color-option" data-color="solid-black" data-theme="color-solid-black" style="background: #000000;">
+            <span class="color-tooltip">Solid Black</span>
+        </div>
+        <div class="color-option" data-color="midnight-silver" data-theme="color-midnight-silver" style="background: #5f5f5f;">
+            <span class="color-tooltip">Midnight Silver Metallic</span>
+        </div>
+        <div class="color-option" data-color="deep-blue" data-theme="color-deep-blue" style="background: #1e3a5f;">
+            <span class="color-tooltip">Deep Blue Metallic</span>
+        </div>
+        <div class="color-option" data-color="ultra-red" data-theme="color-ultra-red" style="background: #c90000;">
+            <span class="color-tooltip">Ultra Red</span>
+        </div>
+    </div>
+
+    <!-- Customize Button -->
+    <button class="customize-btn" id="customizeBtn">
+        <i class="fas fa-palette"></i>
+        Customize Design
+    </button>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="model-x-hero" id="heroSection">
+            <div class="hero-content">
+                <h1 style="opacity: 0; animation: fadeIn 1s ease 0.3s forwards;">MODEL X</h1>
+                <p style="font-size: 1.5rem; margin-bottom: 40px; opacity: 0; animation: fadeIn 1s ease 0.6s forwards;">Plaid — Beyond Ludicrous</p>
+                <div class="hero-buttons" style="opacity: 0; animation: fadeIn 1s ease 0.9s forwards;">
+                    <a href="order.html" class="hero-btn btn-dark">Order Now</a>
+                    <a href="test-drive.html" class="hero-btn btn-light">Demo Drive</a>
+                </div>
+            </div>
+            
+            <div class="hero-stats">
+                <div class="stat-item" style="animation: fadeIn 1s ease 1.2s forwards;">
+                    <div class="stat-value">348 mi</div>
+                    <div class="stat-label">Range (EPA est.)</div>
+                </div>
+                <div class="stat-item" style="animation: fadeIn 1s ease 1.4s forwards;">
+                    <div class="stat-value">2.5 s</div>
+                    <div class="stat-label">0-60 mph*</div>
+                </div>
+                <div class="stat-item" style="animation: fadeIn 1s ease 1.6s forwards;">
+                    <div class="stat-value">149 mph</div>
+                    <div class="stat-label">Top Speed</div>
+                </div>
+                <div class="stat-item" style="animation: fadeIn 1s ease 1.8s forwards;">
+                    <div class="stat-value">1,020 hp</div>
+                    <div class="stat-label">Peak Power</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3D Configurator Section - FIXED CAR IMAGES -->
+        <section class="configurator-section">
+            <h2 class="section-header">Design Your Model X</h2>
+            <div class="configurator-container">
+                <div class="configurator-display">
+                    <div class="car-3d-model" id="car3dModel">
+                        <div class="car-image-container">
+                            <!-- EXTERIOR IMAGES - Model X specific images -->
+                            <img src="https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Model-X-Exterior-Hero-Desktop-LHD.jpg" alt="Model X Pearl White" class="car-image active" data-color="pearl-white">
+                            <img src="https://static0.topspeedimages.com/wordpress/wp-content/uploads/2024/04/2022_tesla_model-x_model-x-102-20428-scaled-1.jpg?w=1600&h=900&fit=crop" alt="Model X Solid Black" class="car-image" data-color="solid-black">
+                            <img src="https://tsportline.com/cdn/shop/articles/midnight-silver-metallic-tesla-model-x-22-inch-gloss-black-tss-flow-forged-wheels-wm-1_1280x.jpg?v=1565108832" alt="Model X Midnight Silver" class="car-image" data-color="midnight-silver">
+                            <img src="/img/model X/ModelX_79.jpg" alt="Model X Deep Blue" class="car-image" data-color="deep-blue">
+                            <img src="/img/model X/ModelX_86.jpg" alt="Model X Ultra Red" class="car-image" data-color="ultra-red">
+                            
+                            <!-- INTERIOR IMAGES - Model X specific -->
+                            <img src="/img/model X/ModelX_75.jpg" alt="All Black Interior" class="car-image interior-image" data-interior="black">
+                            <img src="/img/model X/ModelX_93.jpg" alt="Black & White Interior" class="car-image interior-image" data-interior="white">
+                            <img src="https://www.autoblog.com/.image/w_3840,q_auto:good,c_limit/MjA5MTIyMzYyNDQ2MzI1NjA0/tesla-model-x-plaid.jpg" alt="Cream Interior" class="car-image interior-image" data-interior="cream">
+                        </div>
+                        <div class="car-overlay">
+                            <div class="loading-animation">
+                                <div class="loading-spinner"></div>
+                                <span>Loading Model X</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="configurator-options">
+                    <div class="config-option">
+                        <div class="option-title">Exterior Color</div>
+                        <div class="option-choices">
+                            <div class="option-choice active" data-color="pearl-white" data-theme="color-pearl-white">
+                                <i class="fas fa-palette"></i> Pearl White
+                            </div>
+                            <div class="option-choice" data-color="solid-black" data-theme="color-solid-black">
+                                <i class="fas fa-palette"></i> Solid Black
+                            </div>
+                            <div class="option-choice" data-color="midnight-silver" data-theme="color-midnight-silver">
+                                <i class="fas fa-palette"></i> Midnight Silver
+                            </div>
+                            <div class="option-choice" data-color="deep-blue" data-theme="color-deep-blue">
+                                <i class="fas fa-palette"></i> Deep Blue
+                            </div>
+                            <div class="option-choice" data-color="ultra-red" data-theme="color-ultra-red">
+                                <i class="fas fa-palette"></i> Ultra Red
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="config-option">
+                        <div class="option-title">Wheels</div>
+                        <div class="option-choices">
+                            <div class="option-choice active" data-wheels="20inch">
+                                <i class="fas fa-cog"></i> 20" Cyberstream
+                            </div>
+                            <div class="option-choice" data-wheels="22inch">
+                                <i class="fas fa-cog"></i> 22" Turbine
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="config-option">
+                        <div class="option-title">Interior</div>
+                        <div class="option-choices">
+                            <div class="option-choice active" data-interior="black">
+                                <i class="fas fa-chair"></i> All Black
+                            </div>
+                            <div class="option-choice" data-interior="white">
+                                <i class="fas fa-chair"></i> Black & White
+                            </div>
+                            <div class="option-choice" data-interior="cream">
+                                <i class="fas fa-chair"></i> Cream
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="config-option">
+                        <div class="option-title">Autopilot</div>
+                        <div class="option-choices">
+                            <div class="option-choice active" data-autopilot="basic">
+                                <i class="fas fa-robot"></i> Basic
+                            </div>
+                            <div class="option-choice" data-autopilot="enhanced">
+                                <i class="fas fa-robot"></i> Enhanced
+                            </div>
+                            <div class="option-choice" data-autopilot="full">
+                                <i class="fas fa-robot"></i> Full Self-Driving
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Performance Section -->
+        <section class="performance-section">
+            <div class="performance-meter">
+                <div class="meter-value" id="speedValue">0</div>
+                <div class="meter-label">0-60 MPH Acceleration</div>
+                <div class="meter-bar">
+                    <div class="meter-progress" id="speedProgress"></div>
+                </div>
+                <p style="font-size: 1.2rem; opacity: 0.8; max-width: 600px; margin: 0 auto;">
+                    With the most power and quickest acceleration of any SUV, Model X Plaid is the highest performing SUV ever built.
+                </p>
+            </div>
+        </section>
+
+        <!-- Tech Specs Section -->
+        <section class="tech-specs-section">
+            <h2 class="section-header">Technical Specifications</h2>
+            <div class="specs-grid">
+                <div class="spec-card">
+                    <div class="spec-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3 style="font-size: 1.8rem; margin-bottom: 20px; color: white;">POWERTRAIN</h3>
+                    <p style="color: #ccc; line-height: 1.8; font-size: 1.1rem;">
+                        Tri Motor All-Wheel Drive with torque vectoring. Three independent motors for maximum performance.
+                    </p>
+                </div>
+                
+                <div class="spec-card">
+                    <div class="spec-icon">
+                        <i class="fas fa-battery-full"></i>
+                    </div>
+                    <h3 style="font-size: 1.8rem; margin-bottom: 20px; color: white;">BATTERY</h3>
+                    <p style="color: #ccc; line-height: 1.8; font-size: 1.1rem;">
+                        100 kWh lithium-ion battery. 348 miles range. 250 kW max charging power.
+                    </p>
+                </div>
+                
+                <div class="spec-card">
+                    <div class="spec-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3 style="font-size: 1.8rem; margin-bottom: 20px; color: white;">PERFORMANCE</h3>
+                    <p style="color: #ccc; line-height: 1.8; font-size: 1.1rem;">
+                        0-60 mph: 2.5s. Top speed: 149 mph. 1,020 hp peak power. Falcon Wing doors.
+                    </p>
+                </div>
+                
+                <div class="spec-card">
+                    <div class="spec-icon">
+                        <i class="fas fa-wind"></i>
+                    </div>
+                    <h3 style="font-size: 1.8rem; margin-bottom: 20px; color: white;">AERODYNAMICS</h3>
+                    <p style="color: #ccc; line-height: 1.8; font-size: 1.1rem;">
+                        Advanced aerodynamic design with 0.24 drag coefficient. Optimized for efficiency and stability.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Gallery -->
+        <section class="interactive-gallery">
+            <h2 class="section-header">Explore Model X</h2>
+            
+            <div class="gallery-tabs">
+                <div class="gallery-tab active" data-tab="exterior">Exterior</div>
+                <div class="gallery-tab" data-tab="interior">Interior</div>
+                
+            </div>
+            
+            <div class="gallery-content active" id="exterior-gallery">
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="/img/model X/ModelX_83.jpg" alt="Model X Front">
+                        <div class="gallery-overlay">
+                            <h3>Front Design</h3>
+                            <p>Signature Tesla styling with panoramic windshield</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="/img/model X/ModelX_85.jpg" alt="Model X Side">
+                        <div class="gallery-overlay">
+                            <h3>Falcon Wing Doors</h3>
+                            <p>Signature upward opening doors for easy access</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://hips.hearstapps.com/hmg-prod/images/2026-tesla-model-x-166-690cc64ec9e1f.jpg?crop=1.00xw:0.847xh;0,0.0893xh&resize=640:*" alt="Model X Rear">
+                        <div class="gallery-overlay">
+                            <h3>Rear Design</h3>
+                            <p>Sleek rear profile with integrated spoiler</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gallery-content" id="interior-gallery">
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="/img/model X/ModelX_91.jpg" alt="Model X Interior">
+                        <div class="gallery-overlay">
+                            <h3>Spacious Cabin</h3>
+                            <p>Luxurious interior with seating for up to seven adults</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="/img/model X/ModelX_82.jpg" alt="Model X Screen">
+                        <div class="gallery-overlay">
+                            <h3>17" Display</h3>
+                            <p>Ultra-responsive cinematic touchscreen interface</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="/img/model X/ModelX_90.jpg" alt="Model X Seats">
+                        <div class="gallery-overlay">
+                            <h3>Premium Seating</h3>
+                            <p>Ventilated and heated seating with premium materials</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links-container">
+            <span class="copyright-text">Tesla © 2024</span>
+            <a href="#">Privacy & Legal</a>
+            <a href="#">Vehicle Recalls</a>
+            <a href="contact.html">Contact</a>
+            <a href="#">News</a>
+            <a href="#">Get Updates</a>
+            <a href="#">Locations</a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Color Customizer with Full Theme Change
+            const customizeBtn = document.getElementById('customizeBtn');
+            const colorCustomizer = document.getElementById('colorCustomizer');
+            const colorOptions = document.querySelectorAll('.color-option');
+            const heroSection = document.getElementById('heroSection');
+            const body = document.body;
+
+            // Store current theme and interior
+            let currentTheme = 'color-pearl-white';
+            let currentInterior = 'black';
+
+            // Function to change theme (exterior colors)
+            function changeTheme(newTheme, colorName) {
+                // Show loading animation
+                const carOverlay = document.querySelector('.car-overlay');
+                carOverlay.classList.add('loading');
+                
+                // Remove all color classes from body
+                body.classList.remove('color-pearl-white', 'color-solid-black', 'color-midnight-silver', 'color-deep-blue', 'color-ultra-red');
+                
+                // Add new theme class with delay for smooth transition
+                setTimeout(() => {
+                    body.classList.add(newTheme);
+                    currentTheme = newTheme;
+                }, 100);
+                
+                // Update hero background
+                const heroImage = getHeroImageForColor(colorName);
+                heroSection.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('${heroImage}')`;
+                
+                // Update customize button to match theme
+                customizeBtn.style.background = `var(--gradient-primary)`;
+                
+                // Update car image with animation (show exterior)
+                setTimeout(() => {
+                    updateExteriorImage(colorName);
+                }, 300);
+                
+                // Update color customizer active state
+                colorOptions.forEach(opt => {
+                    if (opt.getAttribute('data-theme') === newTheme) {
+                        opt.classList.add('active');
+                    } else {
+                        opt.classList.remove('active');
+                    }
+                });
+                
+                // Update configurator active state for colors
+                const exteriorChoices = document.querySelectorAll('.config-option:first-child .option-choice');
+                exteriorChoices.forEach(choice => {
+                    if (choice.getAttribute('data-theme') === newTheme) {
+                        choice.classList.add('active');
+                    } else {
+                        choice.classList.remove('active');
+                    }
+                });
+            }
+
+            // Function to get hero image for color
+            function getHeroImageForColor(colorName) {
+                const images = {
+                    'pearl-white': 'https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Model-X-Exterior-Hero-Desktop-LHD.jpg',
+                    'solid-black': 'https://static0.topspeedimages.com/wordpress/wp-content/uploads/2024/04/2022_tesla_model-x_model-x-102-20428-scaled-1.jpg?w=1600&h=900&fit=crop',
+                    'midnight-silver': 'https://tsportline.com/cdn/shop/articles/midnight-silver-metallic-tesla-model-x-22-inch-gloss-black-tss-flow-forged-wheels-wm-1_1280x.jpg?v=1565108832',
+                    'deep-blue': '/img/model X/ModelX_79.jpg',
+                    'ultra-red': '/img/model X/ModelX_86.jpg'
+                };
+                return images[colorName] || images['pearl-white'];
+            }
+
+            // Function to update exterior image
+            function updateExteriorImage(colorName) {
+                const carImages = document.querySelectorAll('.car-image');
+                const carOverlay = document.querySelector('.car-overlay');
+                
+                // Hide all images first
+                carImages.forEach(img => {
+                    img.style.opacity = '0';
+                    img.classList.remove('active');
+                });
+                
+                // Show the selected color image (exterior)
+                const targetImage = document.querySelector(`.car-image[data-color="${colorName}"]:not(.interior-image)`);
+                if (targetImage) {
+                    setTimeout(() => {
+                        targetImage.style.opacity = '1';
+                        targetImage.classList.add('active');
+                        
+                        // Hide loading animation after image is revealed
+                        setTimeout(() => {
+                            carOverlay.classList.remove('loading');
+                        }, 800);
+                    }, 600);
+                }
+            }
+
+            // Function to update interior ONLY (no theme changes)
+            function updateInteriorOnly(interiorType) {
+                const carOverlay = document.querySelector('.car-overlay');
+                
+                // Show loading
+                carOverlay.classList.add('loading');
+                
+                // Hide all images
+                const allImages = document.querySelectorAll('.car-image');
+                allImages.forEach(img => {
+                    img.style.opacity = '0';
+                    img.classList.remove('active');
+                });
+                
+                // Show interior-specific image
+                const interiorImage = document.querySelector(`.car-image.interior-image[data-interior="${interiorType}"]`);
+                
+                if (interiorImage) {
+                    setTimeout(() => {
+                        interiorImage.style.opacity = '1';
+                        interiorImage.classList.add('active');
+                        
+                        setTimeout(() => {
+                            carOverlay.classList.remove('loading');
+                        }, 800);
+                    }, 600);
+                }
+                
+                currentInterior = interiorType;
+            }
+
+            // Color customizer options
+            customizeBtn.addEventListener('click', () => {
+                colorCustomizer.classList.toggle('active');
+            });
+
+            colorOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    const newTheme = option.getAttribute('data-theme');
+                    const colorName = option.getAttribute('data-color');
+                    
+                    changeTheme(newTheme, colorName);
+                    
+                    // Close customizer after selection
+                    setTimeout(() => {
+                        colorCustomizer.classList.remove('active');
+                    }, 1000);
+                });
+            });
+
+            // Configurator Options - Exterior Colors
+            const exteriorColorChoices = document.querySelectorAll('.config-option:first-child .option-choice');
+            exteriorColorChoices.forEach(choice => {
+                choice.addEventListener('click', function() {
+                    const newTheme = this.getAttribute('data-theme');
+                    const colorName = this.getAttribute('data-color');
+                    
+                    // Update active state in configurator
+                    const parent = this.parentElement;
+                    parent.querySelectorAll('.option-choice').forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Change the theme and show exterior
+                    changeTheme(newTheme, colorName);
+                    
+                    // Add visual feedback
+                    this.style.animation = 'pulse 0.6s ease';
+                    setTimeout(() => {
+                        this.style.animation = '';
+                    }, 600);
+                });
+            });
+
+            // Interior Options - ONLY changes interior view
+            const interiorChoices = document.querySelectorAll('.config-option:nth-child(3) .option-choice');
+            interiorChoices.forEach(choice => {
+                choice.addEventListener('click', function() {
+                    const interiorType = this.getAttribute('data-interior');
+                    
+                    // Update active state in interior options only
+                    const parent = this.parentElement;
+                    parent.querySelectorAll('.option-choice').forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Update ONLY the interior view (no theme changes)
+                    updateInteriorOnly(interiorType);
+                    
+                    // Visual feedback
+                    this.style.animation = 'pulse 0.6s ease';
+                    setTimeout(() => {
+                        this.style.animation = '';
+                    }, 600);
+                });
+            });
+
+            // Other configurator options (wheels, autopilot)
+            const otherOptionChoices = document.querySelectorAll('.config-option:nth-child(2) .option-choice, .config-option:nth-child(4) .option-choice');
+            otherOptionChoices.forEach(choice => {
+                choice.addEventListener('click', function() {
+                    const parent = this.parentElement;
+                    parent.querySelectorAll('.option-choice').forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Add visual feedback
+                    this.style.animation = 'pulse 0.6s ease';
+                    setTimeout(() => {
+                        this.style.animation = '';
+                    }, 600);
+                });
+            });
+
+            // Performance Meter Animation
+            const speedValue = document.getElementById('speedValue');
+            const speedProgress = document.getElementById('speedProgress');
+            let currentSpeed = 0;
+            const targetSpeed = 2.5;
+            
+            function animateSpeed() {
+                if (currentSpeed < targetSpeed) {
+                    currentSpeed += 0.02;
+                    speedValue.textContent = currentSpeed.toFixed(1);
+                    speedProgress.style.width = (currentSpeed / 3) * 100 + '%';
+                    requestAnimationFrame(animateSpeed);
+                }
+            }
+            
+            // Start animation when section is in view
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateSpeed();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            });
+            
+            observer.observe(document.querySelector('.performance-section'));
+
+            // Gallery Tabs
+            const galleryTabs = document.querySelectorAll('.gallery-tab');
+            const galleryContents = document.querySelectorAll('.gallery-content');
+            
+            galleryTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const tabId = tab.getAttribute('data-tab');
+                    
+                    galleryTabs.forEach(t => t.classList.remove('active'));
+                    galleryContents.forEach(c => c.classList.remove('active'));
+                    
+                    tab.classList.add('active');
+                    document.getElementById(`${tabId}-gallery`).classList.add('active');
+                });
+            });
+
+            // Mobile menu functionality
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closeMenu = document.getElementById('close-menu');
+            
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.add('open');
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+            
+            if (closeMenu && mobileMenu) {
+                closeMenu.addEventListener('click', () => {
+                    mobileMenu.classList.remove('open');
+                    document.body.style.overflow = 'auto';
+                });
+            }
+
+            // Set initial theme
+            body.classList.add('color-pearl-white');
+            
+            // Set initial car image
+            setTimeout(() => {
+                updateExteriorImage('pearl-white');
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

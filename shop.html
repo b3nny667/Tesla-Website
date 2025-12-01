@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop | Tesla</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --tesla-red: #e31837;
+            --tesla-dark: #171a20;
+            --tesla-light: #f4f4f4;
+            --tesla-gray: #5c5e62;
+            --tesla-blue: #3457b1;
+            --primary-color: #e31837;
+            --secondary-color: #171a20;
+            --accent-color: #ff6b6b;
+            --gradient-primary: linear-gradient(135deg, #e31837 0%, #ff6b6b 100%);
+            --gradient-secondary: linear-gradient(135deg, #171a20 0%, #2a2a2a 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #fff;
+            color: var(--tesla-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Navigation - EXACTLY like index.html */
+        .navbar {
+            position: fixed;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            z-index: 50;
+            top: 0;
+            left: 0;
+            height: 64px; 
+        }
+
+        .nav-container {
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding-left: 16px; 
+            padding-right: 16px; 
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px; 
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .logo-img {
+            height: 70px;
+            width: auto;
+        }
+
+        /* Desktop Menu (Center) */
+        .desktop-menu {
+            display: none;
+        }
+        @media (min-width: 768px) {
+            .desktop-menu {
+                display: flex;
+                gap: 32px; 
+                font-size: 14px; 
+                font-weight: 500; 
+            }
+        }
+
+        .nav-link {
+            padding: 8px 12px; 
+            border-radius: 6px;
+            transition: background-color 0.2s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .nav-link:hover {
+            background-color: #e5e5e5; 
+        }
+
+        /* Mobile Menu Toggle Button */
+        .nav-actions .menu-btn { 
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+            border-radius: 6px;
+            color: #4b5563; 
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+
+        @media (min-width: 768px) {
+            .nav-actions .menu-btn {
+                display: none; /* Hide on desktop */
+            }
+        }
+
+        /* Full-Width Dropdown Fix */
+        .dropdown-item {
+            position: relative; 
+            z-index: 50; 
+        }
+
+        .dropdown-content {
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.2s ease, visibility 0.2s ease; 
+            /* Full screen width positioning */
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100vw;
+            background-color: white; 
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1); 
+            display: flex; 
+            justify-content: center; 
+        }
+
+        /* This class is added by script.js to show the dropdown after the delay */
+        .dropdown-item.dropdown-open .dropdown-content {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .dropdown-item:hover .dropdown-content {
+            /* Fallback/Immediate hover effect - primarily controlled by JS for delay */
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .dropdown-panel-inner {
+            width: 900px;
+            max-width: 90vw;
+            display: flex;
+            gap: 40px;
+            padding: 40px 32px;
+        }
+
+        .dropdown-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 12px;
+            border-radius: 8px;
+            transition: background-color 0.15s;
+            text-decoration: none;
+            color: inherit;
+            flex-grow: 1;
+        }
+
+        .dropdown-link:hover {
+            background-color: #f3f4f6;
+        }
+
+        /* FIX for small cars in dropdown (Robust sizing) */
+        .vehicle-img { 
+            height: 70px; 
+            min-height: 70px; 
+            width: auto; 
+            display: block; 
+            margin-bottom: 8px; 
+        }
+
+        .vehicle-name {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100vh;
+            width: 300px;
+            background-color: white;
+            z-index: 100;
+            padding: 24px;
+            box-shadow: -4px 0 10px rgba(0,0,0,0.1);
+            transform: translateX(100%); 
+            transition: transform 0.3s ease-out; 
+            overflow-y: auto;
+        }
+
+        .mobile-menu.open {
+            transform: translateX(0); 
+        }
+
+        .close-btn { 
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #4b5563;
+        }
+
+        .mobile-menu-links {
+            padding-top: 60px; 
+        }
+
+        .mobile-menu-links a { 
+            display: block;
+            text-decoration: none;
+            color: #171a20;
+            font-weight: 500;
+            padding: 10px 14px;
+            margin-bottom: 8px;
+            border-radius: 6px;
+            transition: background-color 0.2s;
+        }
+
+        .mobile-menu-links a:hover {
+            background-color: #f3f4f6;
+        }
+
+        .mobile-menu-divider {
+            border-top: 1px solid #e5e5e5;
+            padding-top: 8px;
+            margin-top: 16px;
+        }
+
+        /* NEW SHOP DESIGN STARTS HERE */
+
+        /* Minimal Hero Section */
+        .shop-hero {
+            height: 70vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), 
+                        url('https://images.unsplash.com/photo-1560958089-b8a1929cea89?ixlib=rb-4.0.3&auto=format&fit=crop&w=2071&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-size: 5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-5px) translateX(-50%);
+            }
+        }
+
+        /* Minimal Section Titles */
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-align: center;
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--tesla-gray);
+            text-align: center;
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 400;
+        }
+
+        /* Featured Products - Minimal Grid */
+        .featured-products {
+            padding: 100px 20px;
+            background: #fff;
+        }
+
+        .products-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            position: relative;
+            border: 1px solid #f0f0f0;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .product-image-container {
+            position: relative;
+            overflow: hidden;
+            height: 280px;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--tesla-red);
+            color: white;
+            padding: 8px 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .product-content {
+            padding: 30px;
+        }
+
+        .product-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--tesla-red);
+            margin-bottom: 15px;
+        }
+
+        .product-description {
+            color: var(--tesla-gray);
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn-add-to-cart {
+            background: var(--tesla-dark);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 0;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 1;
+            margin-right: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-add-to-cart:hover {
+            background: var(--tesla-red);
+        }
+
+        .btn-wishlist {
+            background: transparent;
+            border: 1px solid #e5e5e5;
+            color: var(--tesla-gray);
+            padding: 12px;
+            border-radius: 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-wishlist:hover {
+            border-color: var(--tesla-red);
+            color: var(--tesla-red);
+        }
+
+        /* Category Showcase */
+        .category-showcase {
+            padding: 100px 20px;
+            background: #f8f9fa;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .category-item {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .category-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .category-item:hover .category-image {
+            transform: scale(1.1);
+        }
+
+        .category-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 40px 30px;
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .category-item:hover .category-overlay {
+            transform: translateY(0);
+        }
+
+        .category-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .category-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 15px;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+
+        .category-link:hover {
+            opacity: 1;
+        }
+
+        /* Tesla Values Section */
+        .tesla-values {
+            padding: 100px 20px;
+            background: white;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .value-card {
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .value-icon {
+            font-size: 3.5rem;
+            margin-bottom: 30px;
+            color: var(--tesla-red);
+        }
+
+        .value-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .value-description {
+            color: var(--tesla-gray);
+            line-height: 1.7;
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            padding: 100px 20px;
+            background: var(--tesla-dark);
+            color: white;
+            text-align: center;
+        }
+
+        .newsletter-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .newsletter-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .newsletter-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.8;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 0;
+            font-size: 1rem;
+        }
+
+        .newsletter-btn {
+            background: var(--tesla-red);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+
+        .newsletter-btn:hover {
+            background: #c4122f;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 60px 24px 30px;
+            text-align: center;
+            background-color: #000;
+            font-size: 12px;
+            color: #5c5e62;
+            border-top: 1px solid #333;
+        }
+
+        .footer-links-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .footer-links-container a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+            font-size: 14px;
+        }
+
+        .footer-links-container a:hover {
+            color: #ffffff;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .products-grid,
+            .category-grid,
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .footer-links-container {
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body class="scroll-smooth">
+    <!-- Navigation - EXACTLY like index.html -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-content">
+                
+                <div class="nav-logo">
+                    <a href="index.html">
+                        <img src="/img/logo.png" alt="Tesla Logo" class="logo-img">
+                    </a>
+                </div>
+                
+                <div class="desktop-menu">
+                    
+                    <div class="dropdown-item">
+                        <a href="#" class="nav-link">Vehicles</a>
+                        
+                        <div class="dropdown-content">
+                            <div class="dropdown-panel-inner">
+                                <a href="model-s.html" class="dropdown-link">
+                                    <img src="/img/avif/model s avif.avif" alt="Model S" class="vehicle-img">
+                                    <span class="vehicle-name">Model S</span>
+                                </a>
+                                <a href="model-3.html" class="dropdown-link">
+                                    <img src="/img/avif/model 3 avif.avif" alt="Model 3" class="vehicle-img">
+                                    <span class="vehicle-name">Model 3</span>
+                                </a>
+                                <a href="model-x.html" class="dropdown-link">
+                                    <img src="/img/avif/model x avif.avif" alt="Model X" class="vehicle-img">
+                                    <span class="vehicle-name">Model X</span>
+                                </a>
+                                <a href="model-y.html" class="dropdown-link">
+                                    <img src="/img/avif/model y avif.avif" alt="Model Y" class="vehicle-img">
+                                    <span class="vehicle-name">Model Y</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="solar-roof.html" class="nav-link">Solar Roof</a>
+                    <a href="solar-panels.html" class="nav-link">Solar Panels</a>
+                    <a href="shop.html" class="nav-link">Shop</a>
+                </div>
+                
+                <div class="nav-actions">
+                    <a href="account.html" class="nav-link nav-icon-link"><i class="fas fa-user-circle"></i></a>
+                    <button class="menu-btn" id="mobile-menu-button">Menu</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+        <button class="close-btn" id="close-menu"><i class="fas fa-times"></i></button>
+        <div class="mobile-menu-links">
+            <a href="model-s.html">Model S</a>
+            <a href="model-3.html">Model 3</a>
+            <a href="model-x.html">Model X</a>
+            <a href="model-y.html">Model Y</a>
+            <a href="solar-roof.html">Solar Roof</a>
+            <a href="solar-panels.html">Solar Panels</a>
+            <a href="shop.html">Shop</a>
+            <a href="account.html">Account</a>
+            <div class="mobile-menu-divider"></div>
+            <a href="https://www.tesla.com/support">Services</a>
+            <a href="https://www.tesla.com/about">About</a>
+            <a href="https://www.tesla.com/contact">Contact</a>
+            <a href="test-drive.html">Demo Drive</a>
+        </div>
+    </div>
+
+    <!-- Minimal Hero Section -->
+    <section class="shop-hero">
+        <div class="hero-content">
+            <h1 class="fade-in">TESLA SHOP</h1>
+            <p class="fade-in">Engineered for performance. Designed for life.</p>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down" style="font-size: 1.5rem;"></i>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-products">
+        <div class="products-container">
+            <h2 class="section-title">Featured Collection</h2>
+            <p class="section-subtitle">Premium accessories designed to enhance your Tesla experience</p>
+            
+            <div class="products-grid">
+                <div class="product-card fade-in">
+                    <div class="product-image-container">
+                        <img src="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_3/CHARGING_ADAPTERS/1457768-02-H_01_2000.png" alt="Wall Connector" class="product-image">
+                        <div class="product-badge">BEST SELLER</div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Wall Connector</h3>
+                        <div class="product-price">$550</div>
+                        <p class="product-description">The fastest way to charge your Tesla at home. Features a sleek, durable design and customizable power levels.</p>
+                        <div class="product-actions">
+                            <button class="btn-add-to-cart">Add to Cart</button>
+                            <button class="btn-wishlist"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card fade-in">
+                    <div class="product-image-container">
+                        <img src="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_Y/INTERIOR/1935489-99-E_1_2000.png" alt="Model 3 All-Weather Interior Liners" class="product-image">
+                        <div class="product-badge">NEW</div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">All-Weather Interior Liners</h3>
+                        <div class="product-price">$225</div>
+                        <p class="product-description">Maximum protection for your Tesla's interior. Custom-fit, durable, and easy to clean.</p>
+                        <div class="product-actions">
+                            <button class="btn-add-to-cart">Add to Cart</button>
+                            <button class="btn-wishlist"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card fade-in">
+                    <div class="product-image-container">
+                        <img src="https://media.wired.com/photos/657b331504920200bd5bb33f/2:3/w_1000,h_1500,c_limit/Tesla-Wireless-Charger-Featured-Gear.jpg" alt="Wireless Charging Platform" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Wireless Charging Platform</h3>
+                        <div class="product-price">$300</div>
+                        <p class="product-description">Charge up to three devices simultaneously with this premium aluminum charging platform.</p>
+                        <div class="product-actions">
+                            <button class="btn-add-to-cart">Add to Cart</button>
+                            <button class="btn-wishlist"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Showcase -->
+    <section class="category-showcase">
+        <h2 class="section-title">Shop By Category</h2>
+        <p class="section-subtitle">Explore our curated collections designed for the Tesla lifestyle</p>
+        
+        <div class="category-grid">
+            <div class="category-item fade-in">
+                <img src="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_3/CHARGING_ADAPTERS/1457768-02-H_01_2000.png" alt="Charging" class="category-image">
+                <div class="category-overlay">
+                    <h3 class="category-name">Charging</h3>
+                    <p>Home and travel charging solutions</p>
+                    <a href="https://www.tesla.com/charging" class="category-link">Explore <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="category-item fade-in">
+                <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Apparel" class="category-image">
+                <div class="category-overlay">
+                    <h3 class="category-name">Apparel</h3>
+                    <p>Premium Tesla-branded clothing</p>
+                    <a href="https://www.tesla.com/merchandise" class="category-link">Explore <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="category-item fade-in">
+                <img src="https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Lifestyle" class="category-image">
+                <div class="category-overlay">
+                    <h3 class="category-name">Lifestyle</h3>
+                    <p>Accessories for everyday life</p>
+                    <a href="https://www.tesla.com/accessories" class="category-link">Explore <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tesla Values -->
+    <section class="tesla-values">
+        <h2 class="section-title">Why Tesla Shop</h2>
+        <p class="section-subtitle">Products engineered with the same attention to detail as our vehicles</p>
+        
+        <div class="values-grid">
+            <div class="value-card fade-in">
+                <div class="value-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3 class="value-title">Premium Quality</h3>
+                <p class="value-description">Every product is designed and tested to meet Tesla's rigorous standards for performance and durability.</p>
+            </div>
+            
+            <div class="value-card fade-in">
+                <div class="value-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <h3 class="value-title">Sustainable Design</h3>
+                <p class="value-description">We prioritize sustainable materials and manufacturing processes in all our products.</p>
+            </div>
+            
+            <div class="value-card fade-in">
+                <div class="value-icon">
+                    <i class="fas fa-shipping-fast"></i>
+                </div>
+                <h3 class="value-title">Fast Shipping</h3>
+                <p class="value-description">Free expedited shipping on orders over $100. Most items ship within 24 hours.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter-section">
+        <div class="newsletter-container">
+            <h2 class="newsletter-title">Stay Connected</h2>
+            <p class="newsletter-subtitle">Be the first to know about new products and exclusive offers</p>
+            
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email" class="newsletter-input" required>
+                <button type="submit" class="newsletter-btn">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links-container">
+            <a href="https://www.tesla.com/legal">Privacy & Legal</a>
+            <a href="https://www.tesla.com/vehicle-recalls">Vehicle Recalls</a>
+            <a href="https://www.tesla.com/contact">Contact</a>
+            <a href="https://www.tesla.com/blog">News</a>
+            <a href="https://www.tesla.com/updates">Get Updates</a>
+            <a href="https://www.tesla.com/findus">Locations</a>
+        </div>
+        <span class="copyright-text">Tesla © 2024</span>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animation on scroll
+            const fadeElements = document.querySelectorAll('.fade-in');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            fadeElements.forEach(el => {
+                el.style.opacity = 0;
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                observer.observe(el);
+            });
+            
+            // NAVBAR DROPDOWN DELAY LOGIC (0.5-second delay)
+            const dropdownItem = document.querySelector('.dropdown-item');
+            const delay = 500; 
+            let dropdownTimer;
+
+            if (dropdownItem) {
+                dropdownItem.addEventListener('mouseenter', () => {
+                    clearTimeout(dropdownTimer); 
+                    dropdownTimer = setTimeout(() => {
+                        dropdownItem.classList.add('dropdown-open');
+                    }, delay);
+                });
+
+                dropdownItem.addEventListener('mouseleave', () => {
+                    clearTimeout(dropdownTimer);
+                    dropdownItem.classList.remove('dropdown-open');
+                });
+            }
+
+            // Mobile menu functionality 
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closeMenu = document.getElementById('close-menu');
+
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.add('open'); 
+                    document.body.style.overflow = 'hidden'; 
+                });
+            }
+
+            if (closeMenu && mobileMenu) {
+                closeMenu.addEventListener('click', () => {
+                    mobileMenu.classList.remove('open'); 
+                    document.body.style.overflow = 'auto'; 
+                });
+            }
+
+            // Add to cart functionality
+            const addToCartButtons = document.querySelectorAll('.btn-add-to-cart');
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const productCard = this.closest('.product-card');
+                    const productTitle = productCard.querySelector('.product-title').textContent;
+                    const productPrice = productCard.querySelector('.product-price').textContent;
+                    
+                    // In a real application, you would add to a shopping cart
+                    alert(`Added ${productTitle} (${productPrice}) to your cart!`);
+                    
+                    // Visual feedback
+                    this.textContent = 'Added!';
+                    this.style.background = 'var(--tesla-red)';
+                    
+                    setTimeout(() => {
+                        this.textContent = 'Add to Cart';
+                        this.style.background = 'var(--tesla-dark)';
+                    }, 2000);
+                });
+            });
+
+            // Wishlist functionality
+            const wishlistButtons = document.querySelectorAll('.btn-wishlist');
+            wishlistButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const icon = this.querySelector('i');
+                    
+                    if (icon.classList.contains('far')) {
+                        icon.classList.remove('far');
+                        icon.classList.add('fas');
+                        this.style.color = 'var(--tesla-red)';
+                        this.style.borderColor = 'var(--tesla-red)';
+                    } else {
+                        icon.classList.remove('fas');
+                        icon.classList.add('far');
+                        this.style.color = 'var(--tesla-gray)';
+                        this.style.borderColor = '#e5e5e5';
+                    }
+                });
+            });
+
+            // Newsletter form submission
+            const newsletterForm = document.querySelector('.newsletter-form');
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                alert(`Thank you for subscribing with ${email}! You'll receive updates on new Tesla products.`);
+                this.reset();
+            });
+        });
+    </script>
+</body>
+</html>

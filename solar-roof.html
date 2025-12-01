@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar Roof | Tesla</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* TESLA OFFICIAL STYLE REPLICATION */
+        
+        :root {
+            --tesla-white: #ffffff;
+            --tesla-black: #000000;
+            --tesla-dark: #171a20;
+            --tesla-gray: #5c5e62;
+            --tesla-light-gray: #d0d1d2;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--tesla-white);
+            color: var(--tesla-dark);
+            overflow-x: hidden;
+            font-weight: 400;
+        }
+
+        /* Tesla Official Hero Section (Solar Roof specific video) */
+        .tesla-hero {
+            height: 100vh;
+            background: var(--tesla-black);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding-top: 64px;
+        }
+
+        /* Video background implementation */
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.85; /* Slightly less opaque than Solar Panels for a clearer video look */
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding-top: 15vh;
+        }
+
+        .hero-title {
+            font-size: 52px; /* Slightly larger title for impact */
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--tesla-white);
+            letter-spacing: -1px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: var(--tesla-white);
+            margin-bottom: 40px;
+            font-weight: 400;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            margin-bottom: 30vh;
+        }
+
+        .tesla-btn {
+            padding: 10px 80px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            min-width: 260px;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--tesla-white);
+            color: var(--tesla-dark);
+        }
+
+        .btn-primary:hover {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--tesla-white);
+            border: 2px solid var(--tesla-white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--tesla-white);
+            color: var(--tesla-dark);
+        }
+
+        /* Tesla Official Stats (Preserved) */
+        .tesla-stats {
+            position: relative;
+            z-index: 2;
+            padding: 0 40px 80px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            text-align: center;
+            color: var(--tesla-white);
+        }
+
+        .stat-value {
+            font-size: 28px;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        /* General Section Styles (Preserved) */
+        .tesla-section {
+            padding: 100px 40px;
+            position: relative;
+        }
+
+        .section-dark {
+            background: var(--tesla-dark);
+            color: var(--tesla-white);
+        }
+
+        .section-light {
+            background: var(--tesla-white);
+            color: var(--tesla-dark);
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 500;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+        
+        /* New Styles for Complex Sections */
+
+        /* Features Grid - 3 Column */
+        .features-grid-complex {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .feature-item-complex {
+            padding: 20px;
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-item-complex:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon-complex {
+            font-size: 48px;
+            margin-bottom: 15px;
+            color: var(--tesla-dark);
+        }
+
+        .section-dark .feature-icon-complex {
+            color: var(--tesla-white);
+        }
+
+        .feature-title-complex {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .feature-text-complex {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--tesla-gray);
+        }
+        .section-dark .feature-text-complex {
+            color: var(--tesla-light-gray);
+        }
+
+        /* Interactive Visualizer Section */
+        .interactive-visualizer {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .viz-tabs {
+            display: flex;
+            justify-content: center;
+            border-bottom: 1px solid var(--tesla-light-gray);
+            margin-bottom: 40px;
+            gap: 40px;
+        }
+
+        .viz-tab {
+            padding: 15px 30px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: border-color 0.3s ease, color 0.3s ease;
+            color: var(--tesla-gray);
+        }
+
+        .viz-tab.active {
+            border-bottom-color: var(--tesla-dark);
+            color: var(--tesla-dark);
+        }
+        .section-dark .viz-tab {
+            color: var(--tesla-light-gray);
+        }
+        .section-dark .viz-tab.active {
+            border-bottom-color: var(--tesla-white);
+            color: var(--tesla-white);
+        }
+        .section-dark .viz-tabs {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .viz-content {
+            display: none;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .viz-content.active {
+            display: grid;
+        }
+
+        .viz-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .viz-details h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .viz-details p {
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            color: var(--tesla-gray);
+        }
+        .section-dark .viz-details p {
+            color: var(--tesla-light-gray);
+        }
+
+        .viz-specs {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .viz-spec-item {
+            border-left: 3px solid var(--tesla-dark);
+            padding-left: 15px;
+        }
+        .section-dark .viz-spec-item {
+             border-left: 3px solid var(--tesla-white);
+        }
+
+        .viz-spec-item .value {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .viz-spec-item .label {
+            font-size: 12px;
+            color: var(--tesla-gray);
+        }
+        .section-dark .viz-spec-item .label {
+            color: var(--tesla-light-gray);
+        }
+        
+        /* Savings Calculator Mockup */
+        .calculator-mockup {
+            background: linear-gradient(135deg, var(--tesla-dark) 0%, #30333a 100%);
+            padding: 60px 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-width: 1000px;
+            margin: 0 auto;
+            color: var(--tesla-white);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .calculator-mockup h2 {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .calculator-form label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 8px;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+
+        .calculator-form input[type="range"] {
+            width: 100%;
+            margin-bottom: 30px;
+        }
+        
+        .calculator-output {
+            padding-left: 40px;
+            border-left: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .output-box {
+            background-color: rgba(255, 255, 255, 0.08);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .output-box .value {
+            font-size: 40px;
+            font-weight: 700;
+            color: #4CAF50; /* Green for savings */
+            margin-bottom: 5px;
+        }
+
+        .output-box .label {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* Testimonials Section */
+        .testimonial-card {
+            background: var(--tesla-white);
+            color: var(--tesla-dark);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card blockquote {
+            font-style: italic;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .testimonial-card blockquote::before {
+            content: '“';
+            font-size: 60px;
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            color: var(--tesla-light-gray);
+            line-height: 1;
+        }
+
+        .testimonial-card .author {
+            font-weight: 600;
+            font-size: 14px;
+            display: block;
+        }
+
+        .testimonial-card .location {
+            font-size: 12px;
+            color: var(--tesla-gray);
+        }
+
+        /* --- FOOTER STYLES --- */
+        .footer {
+            background-color: var(--tesla-white);
+            padding: 20px 40px;
+            text-align: center;
+            border-top: 1px solid var(--tesla-light-gray);
+        }
+
+        .footer-links-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            font-size: 12px;
+            color: var(--tesla-gray);
+        }
+
+        .footer-links-container a {
+            color: var(--tesla-gray);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links-container a:hover {
+            color: var(--tesla-dark);
+        }
+
+        .copyright-text {
+            font-weight: 500;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .viz-content, .calculator-mockup {
+                grid-template-columns: 1fr;
+            }
+            .calculator-output {
+                border-left: none;
+                padding-left: 0;
+                padding-top: 30px;
+                border-top: 1px solid rgba(255, 255, 255, 0.2);
+            }
+            .features-grid-complex {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 32px;
+            }
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
+                gap: 16px;
+            }
+            .tesla-btn {
+                min-width: 200px;
+                padding: 10px 40px;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+            .tesla-section {
+                padding: 60px 20px;
+            }
+            .viz-tabs {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+            .viz-content {
+                text-align: center;
+            }
+            .viz-specs {
+                justify-content: center;
+            }
+            .desktop-menu {
+                display: none; /* Hide desktop menu on mobile */
+            }
+            .navbar {
+                padding: 0 20px;
+            }
+            .nav-actions {
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body class="scroll-smooth">
+    <!-- NAVBAR (Now identical to index.html) -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-content">
+                
+                <div class="nav-logo">
+                    <a href="index.html">
+                        <img src="/img/logo.png" alt="Tesla Logo" class="logo-img">
+                    </a>
+                </div>
+                
+                <div class="desktop-menu">
+                    
+                    <div class="dropdown-item">
+                        <a href="#" class="nav-link">Vehicles</a>
+                        
+                        <div class="dropdown-content">
+                            <div class="dropdown-panel-inner">
+                                <a href="model-s.html" class="dropdown-link">
+                                    <img src="/img/avif/model s avif.avif" alt="Model S" class="vehicle-img">
+                                    <span class="vehicle-name">Model S</span>
+                                </a>
+                                <a href="model-3.html" class="dropdown-link">
+                                    <img src="/img/avif/model 3 avif.avif" alt="Model 3" class="vehicle-img">
+                                    <span class="vehicle-name">Model 3</span>
+                                </a>
+                                <a href="model-x.html" class="dropdown-link">
+                                    <img src="/img/avif/model x avif.avif" alt="Model X" class="vehicle-img">
+                                    <span class="vehicle-name">Model X</span>
+                                </a>
+                                <a href="model-y.html" class="dropdown-link">
+                                    <img src="/img/avif/model y avif.avif   " alt="Model Y" class="vehicle-img">
+                                    <span class="vehicle-name">Model Y</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="solar-roof.html" class="nav-link">Solar Roof</a>
+                    <a href="solar-panels.html" class="nav-link">Solar Panels</a>
+                    <a href="shop.html" class="nav-link">Shop</a>
+                </div>
+                
+                <div class="nav-actions">
+                    <a href="account.html" class="nav-link nav-icon-link"><i class="fas fa-user-circle"></i></a>
+                    <button class="menu-btn" id="mobile-menu-button">Menu</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu (Identical to index.html) -->
+    <div id="mobile-menu" class="mobile-menu">
+        <button class="close-btn" id="close-menu"><i class="fas fa-times"></i></button>
+        <div class="mobile-menu-links">
+            <a href="model-s.html">Model S</a>
+            <a href="model-3.html">Model 3</a>
+            <a href="model-x.html">Model X</a>
+            <a href="model-y.html">Model Y</a>
+            <a href="solar-roof.html">Solar Roof</a>
+            <a href="solar-panels.html">Solar Panels</a>
+            <a href="shop.html">Shop</a>
+            <a href="account.html">Account</a>
+            <div class="mobile-menu-divider"></div>
+            <a href="services.html">Services</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="test-drive.html">Demo Drive</a>
+        </div>
+    </div>
+
+    <main>
+        <!-- HERO SECTION with Video Background (Solar Roof Content) -->
+        <section class="tesla-hero">
+            <!-- Video background for Solar Roof -->
+            <video class="hero-video" autoplay muted loop playsinline>
+                <!-- Using a high-quality Solar Roof visual asset URL -->
+                <source src="https://digitalassets.tesla.com/tesla-contents/video/upload/f_auto,q_auto/Solar-Roof-Hero-Desktop-new.mp4" type="video/mp4">
+                <!-- Fallback image if video fails to load or play -->
+                <img src="https://placehold.co/1920x1080/000/fff?text=Solar+Roof+Video+Fallback" alt="Solar Roof" onerror="this.style.display='none'">
+            </video>
+            
+            <div class="hero-content">
+                <h1 class="hero-title">Solar Roof</h1>
+                <p class="hero-subtitle">Beautiful Energy. Stronger Than Tile.</p>
+                <div class="hero-actions">
+                    <a href="order.html" class="tesla-btn btn-primary">Order Now</a>
+                    <a href="#learn-more" class="tesla-btn btn-secondary">View Design</a>
+                </div>
+            </div>
+            
+            <div class="tesla-stats">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-value">25-Year</div>
+                        <div class="stat-label">Tile Warranty</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">Aesthetics</div>
+                        <div class="stat-label">Seamless Integration</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">Durable</div>
+                        <div class="stat-label">Class A Fire Rated</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">30%</div>
+                        <div class="stat-label">Tax Credit</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SECTION 2: Energy Ecosystem (Content modified for Solar Roof) -->
+        <section class="tesla-section section-light">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 60px;">Reinventing the Roof</h2>
+            <div class="features-grid-complex">
+                <div class="feature-item-complex">
+                    <div class="feature-icon-complex">
+                        <i class="fas fa-hammer"></i>
+                    </div>
+                    <h3 class="feature-title-complex">Invisible Solar Technology</h3>
+                    <p class="feature-text-complex">
+                        Solar power is seamlessly hidden within beautiful glass tiles, maintaining the aesthetics of your home without visible panels.
+                    </p>
+                </div>
+                <div class="feature-item-complex">
+                    <div class="feature-icon-complex">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title-complex">Engineered for Protection</h3>
+                    <p class="feature-text-complex">
+                        Built with tempered glass, Solar Roof tiles are more than three times stronger than standard roofing tiles, providing superior protection.
+                    </p>
+                </div>
+                <div class="feature-item-complex">
+                    <div class="feature-icon-complex">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="feature-title-complex">Lifetime Energy Production</h3>
+                    <p class="feature-text-complex">
+                        Generate energy efficiently for decades with a 25-year performance warranty, designed to last the lifetime of your home.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: Design Your System (Content modified for Solar Roof) -->
+        <section class="tesla-section section-dark">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 60px; color: var(--tesla-white);">Choose Your Tile Style</h2>
+            <div class="interactive-visualizer">
+                <div class="viz-tabs">
+                    <div class="viz-tab active" data-tab="textured">Textured Glass</div>
+                    <div class="viz-tab" data-tab="smooth">Smooth Glass</div>
+                    <div class="viz-tab" data-tab="powerwall">Powerwall Backup</div>
+                </div>
+
+                <div id="textured-content" class="viz-content active">
+                    <div class="viz-image">
+                        <img src="https://images.greenbuildingadvisor.com/app/uploads/2018/07/24192643/Tesla%20textured%20glass%20copy-thumb1x1.jpg" alt="Textured Solar Glass Tiles">
+                    </div>
+                    <div class="viz-details">
+                        <h3>Textured Glass Tile</h3>
+                        <p>
+                            Mimics the appearance of traditional shingle roofs while discretely collecting solar energy. This is the most popular style for a classic aesthetic.
+                        </p>
+                        <div class="viz-specs">
+                            <div class="viz-spec-item">
+                                <div class="value">Tempered</div>
+                                <div class="label">Glass Composition</div>
+                            </div>
+                            <div class="viz-spec-item">
+                                <div class="value">Class 3</div>
+                                <div class="label">Hail Resistance</div>
+                            </div>
+                            <div class="viz-spec-item">
+                                <div class="value">Matte</div>
+                                <div class="label">Finish Appearance</div>
+                            </div>
+                            <div class="viz-spec-item">
+                                <div class="value">Lifetime</div>
+                                <div class="label">Roof Warranty</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="smooth-content" class="viz-content">
+                    <div class="viz-image">
+                        <img src="https://www.insidehook.com/wp-content/uploads/2017/05/tesla2_051117-1.jpg" alt="Smooth Solar Glass Tiles">
+                    </div>
+                    <div class="viz-details">
+                        <h3>Smooth Glass Tile</h3>
+                        <p>
+                            Offers a modern, minimalist look with a reflective surface. Ideal for contemporary home designs that emphasize clean lines and seamless transitions.
+                        </p>
+                        <div class="viz-specs">
+                            <div class="viz-spec-item">
+                                <div class="value">Glossy</div>
+                                <div class="label">Finish Appearance</div>
+                            </div>
+                            <div class="viz-spec-item">
+                                <div class="value">Sleek</div>
+                                <div class="label">Modern Aesthetic</div>
+                            </div>
+                            <div class="viz-spec-item">
+                                <div class="value">Lifetime</div>
+                                <div class="label">Roof Warranty</div>
+                            </div>
+                            <div class="viz-spec-item">
+                                <div class="value">Integrated</div>
+                                <div class="label">Thermal Control</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="powerwall-content" class="viz-content">
+                    <div class="viz-image">
+                        <!-- Reusing Powerwall image as it applies to both products -->
+                        <img src="https://truesouthsolar.net/wp-content/uploads/2023/11/Tesla-Powerwall_True-South_Solar.jpg" alt="Tesla Powerwall">
+                    </div>
+                    <div class="viz-details">
+                        <h3>24/7 Power Security</h3>
+                        <p>
+                            Every Solar Roof is designed to work with Powerwall, providing energy storage for day and night use, and instant backup power during grid outages.
+                        </p>
+                        <div class="viz-specs">
+                            <div class="viz-spec-item">
+                                <div class="value">13.5kWh</div>
+                                <div class="label">Usable Capacity</div>
+                            </div>
+                            <div class="viz-spec-item">
+                                <div class="value">100%</div>
+                                <div class="label">Depth of Discharge</div>
+                            </div>
+                            <div class="viz-spec-item">
+                                <div class="value">5 kW</div>
+                                <div class="label">Continuous Power</div>
+                            </div>
+                            <div class="viz-spec-item">
+                                <div class="value">Seamless</div>
+                                <div class="label">App Integration</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: Calculator -->
+        <section class="tesla-section section-light">
+            <div class="calculator-mockup">
+                <div class="calculator-form">
+                    <h2>Estimate Your Lifetime Savings</h2>
+                    <p style="font-size: 14px; margin-bottom: 30px; color: rgba(255, 255, 255, 0.7);">
+                        Adjust your monthly utility bill and system size to see the potential financial impact over 25 years.
+                    </p>
+                    
+                    <label for="bill">Average Monthly Electric Bill ($)</label>
+                    <input type="range" id="bill" min="50" max="500" value="150" step="10">
+                    <span id="bill-output" style="display: block; text-align: right; font-weight: 700; font-size: 18px;">$150</span>
+                    
+                    <label for="size" style="margin-top: 20px;">System Size (kW)</label>
+                    <input type="range" id="size" min="3" max="15" value="6" step="0.5">
+                    <span id="size-output" style="display: block; text-align: right; font-weight: 700; font-size: 18px;">6.0 kW</span>
+                </div>
+                <div class="calculator-output">
+                    <div class="output-box">
+                        <div class="value" id="lifetime-savings">$45,000</div>
+                        <div class="label">Est. 25-Year Lifetime Savings</div>
+                    </div>
+                    <div class="output-box">
+                        <div class="value" id="tax-credit">$6,750</div>
+                        <div class="label">Federal Tax Credit (30%)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SECTION 5: Testimonials (Content modified for Solar Roof) -->
+        <section class="tesla-section section-dark" style="padding: 100px 40px; background-color: #30333a;">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 60px; color: var(--tesla-white);">What Our Customers Say</h2>
+            <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 40px;">
+                <div class="testimonial-card">
+                    <blockquote>
+                        It's incredible that our roof now generates all our power. It looks stunning—much better than the old shingles—and the storm protection is genuinely reassuring.
+                    </blockquote>
+                    <span class="author">David K.</span>
+                    <span class="location">Miami, FL</span>
+                </div>
+                <div class="testimonial-card">
+                    <blockquote>
+                        We replaced our aging roof with Solar Roof and the whole process was seamless. The app gives us complete control, and the Powerwall handles the overnight load perfectly.
+                    </blockquote>
+                    <span class="author">Sophia P.</span>
+                    <span class="location">Dallas, TX</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-links-container">
+            <span class="copyright-text">Tesla © 2024</span>
+            <a href="#">Privacy & Legal</a>
+            <a href="#">Vehicle Recalls</a>
+            <a href="contact.html">Contact</a>
+            <a href="#">News</a>
+            <a href="#">Get Updates</a>
+            <a href="#">Locations</a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu functionality
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closeMenu = document.getElementById('close-menu');
+            
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.add('open');
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+            
+            if (closeMenu && mobileMenu) {
+                closeMenu.addEventListener('click', () => {
+                    mobileMenu.classList.remove('open');
+                    document.body.style.overflow = 'auto';
+                });
+            }
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Interactive Visualizer Tabs
+            const tabs = document.querySelectorAll('.viz-tab');
+            const contents = document.querySelectorAll('.viz-content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs and contents
+                    tabs.forEach(t => t.classList.remove('active'));
+                    contents.forEach(c => c.classList.remove('active'));
+
+                    // Add active class to the clicked tab
+                    tab.classList.add('active');
+
+                    // Show the corresponding content
+                    const targetId = tab.getAttribute('data-tab') + '-content';
+                    document.getElementById(targetId).classList.add('active');
+                });
+            });
+
+            // Savings Calculator Mockup
+            const billRange = document.getElementById('bill');
+            const sizeRange = document.getElementById('size');
+            const billOutput = document.getElementById('bill-output');
+            const sizeOutput = document.getElementById('size-output');
+            const lifetimeSavings = document.getElementById('lifetime-savings');
+            const taxCredit = document.getElementById('tax-credit');
+
+            function updateCalculator() {
+                const bill = parseInt(billRange.value);
+                const size = parseFloat(sizeRange.value);
+
+                // Update range outputs
+                billOutput.textContent = `$${bill}`;
+                sizeOutput.textContent = `${size.toFixed(1)} kW`;
+
+                // Simplified calculation logic for mockup purposes:
+                // Savings = (Monthly Bill * 12 Months * 25 Years) * Efficiency Multiplier (0.8-1.2 based on system size)
+                // Slightly higher base efficiency multiplier for Solar Roof due to premium cost/efficiency
+                const efficiencyMultiplier = 1.1 + (size - 6) * 0.04; 
+                let totalSavings = Math.round(bill * 12 * 25 * efficiencyMultiplier);
+                
+                // Federal Tax Credit (30% of an estimated system cost)
+                const costPerKW = 4500; // Mock higher average cost for roof tiles
+                const systemCost = size * costPerKW * 1000; 
+                const federalTaxCredit = Math.round(systemCost * 0.30);
+                
+                // Format numbers with comma separators
+                const formatter = new Intl.NumberFormat('en-US');
+                
+                lifetimeSavings.textContent = `$${formatter.format(totalSavings)}`;
+                taxCredit.textContent = `$${formatter.format(federalTaxCredit)}`;
+            }
+
+            // Initial call to set values
+            updateCalculator();
+
+            // Add listeners to ranges
+            billRange.addEventListener('input', updateCalculator);
+            sizeRange.addEventListener('input', updateCalculator);
+        });
+    </script>
+</body>
+</html>

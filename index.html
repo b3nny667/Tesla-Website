@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tesla Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="scroll-smooth">
+    <script src="script.js" defer></script>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-content">
+                
+                <div class="nav-logo">
+                    <a href="index.html">
+                        <img src="/img/logo.png" alt="Tesla Logo" class="logo-img">
+                    </a>
+                </div>
+                
+                <div class="desktop-menu">
+                    
+                    <div class="dropdown-item">
+                        <a baef="#" class="nav-link">Vehicles</a>
+                        
+                        <div class="dropdown-content">
+                            <div class="dropdown-panel-inner">
+                                <a href="model-s.html" class="dropdown-link">
+                                    <img src="/img/avif/model s avif.avif" alt="Model S" class="vehicle-img">
+                                    <span class="vehicle-name">Model S</span>
+                                </a>
+                                <a href="model-3.html" class="dropdown-link">
+                                    <img src="/img/avif/model 3 avif.avif" alt="Model 3" class="vehicle-img">
+                                    <span class="vehicle-name">Model 3</span>
+                                </a>
+                                <a href="model-x.html" class="dropdown-link">
+                                    <img src="/img/avif/model x avif.avif" alt="Model X" class="vehicle-img">
+                                    <span class="vehicle-name">Model X</span>
+                                </a>
+                                <a href="model-y.html" class="dropdown-link">
+                                    <img src="/img/avif/model y avif.avif" alt="Model Y" class="vehicle-img">
+                                    <span class="vehicle-name">Model Y</span>
+                                </a>
+                                </div>
+                        </div>
+                    </div>
+
+                    <a href="solar-roof.html" class="nav-link">Solar Roof</a>
+                    <a href="solar-panels.html" class="nav-link">Solar Panels</a>
+                    <a href="shop.html" class="nav-link">Shop</a>
+                </div>
+                
+                <div class="nav-actions">
+                    <a href="account.html" class="nav-link nav-icon-link"><i class="fas fa-user-circle"></i></a>
+                    <button class="menu-btn" id="mobile-menu-button">Menu</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div id="mobile-menu" class="mobile-menu">
+        <button class="close-btn" id="close-menu"><i class="fas fa-times"></i></button>
+        <div class="mobile-menu-links">
+            <a href="model-s.html">Model S</a>
+            <a href="model-3.html">Model 3</a>
+            <a href="model-x.html">Model X</a>
+            <a href="model-y.html">Model Y</a>
+            <a href="solar-roof.html">Solar Roof</a>
+            <a href="solar-panels.html">Solar Panels</a>
+            <a href="shop.html">Shop</a>
+            <a href="account.html">Account</a>
+            <div class="mobile-menu-divider"></div>
+            <a href="order.html">Order</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="test-drive.html">Demo Drive</a>
+        </div>
+    </div>
+    
+    <main>
+        <section class="hero-section text-dark" id="car-carousel">
+            <div class="hero-content">
+                <h1>Model Y</h1>
+                <p>All-Wheel Drive</p>
+            </div>
+            <div class="hero-buttons">
+                <a href="model-y.html" class="hero-btn btn-dark">Order Now</a>
+                <a href="test-drive.html" class="hero-btn btn-light">Demo Drive</a>
+            </div>
+        </section>
+
+        <section class="two-column-carousel-section">
+            <div class="carousel-container">
+                
+                <div class="carousel-card active" data-slide="0">
+                    <div class="card-image-container">
+                        <img src="/img/model Y/ModelYStandard_84.jpg" alt="Model Y">
+                        <span class="card-category">Midsize SUV</span>
+                    </div>
+                    <div class="card-content">
+                        <h2>Model Y</h2>
+                        <p>3.99% APR Available</p>
+                        <div class="card-buttons">
+                            <a href="model-y.html" class="card-btn btn-dark">Order Now</a>
+                            <a href="test-drive.html" class="card-btn btn-light">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-card active" data-slide="1">
+                    <div class="card-image-container">
+                        <img src="https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Homepage-Model-3-Desktop-NA.jpg" alt="Model 3">
+                        <span class="card-category">Sport Sedan</span>
+                    </div>
+                    <div class="card-content">
+                        <h2>Model 3</h2>
+                        <p>2.99% APR Available</p>
+                        <div class="card-buttons">
+                            <a href="model-3.html" class="card-btn btn-dark">Order Now</a>
+                            <a href="test-drive.html" class="card-btn btn-light">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-card" data-slide="2">
+                    <div class="card-image-container">
+                        <img src="https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Homepage-Model-S-Desktop-LHD.jpg" alt="Model S">
+                        <span class="card-category">Luxury Sedan</span>
+                    </div>
+                    <div class="card-content">
+                        <h2>Model S</h2>
+                        <p>Experience Electric Performance</p>
+                        <div class="card-buttons">
+                            <a href="model-s.html" class="card-btn btn-dark">Order Now</a>
+                            <a href="test-drive.html" class="card-btn btn-light">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-card" data-slide="3">
+                    <div class="card-image-container">
+                        <img src="https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Homepage-Model-X-Desktop-LHD.jpg" alt="Model X">
+                        <span class="card-category">Utility Vehicle</span>
+                    </div>
+                    <div class="card-content">
+                        <h2>Model X</h2>
+                        <p>Immediate Delivery</p>
+                        <div class="card-buttons">
+                            <a href="model-x.html" class="card-btn btn-dark">Order Now</a>
+                            <a href="test-drive.html" class="card-btn btn-light">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="carousel-navigation">
+                <button class="carousel-arrow prev-arrow">&lt;</button>
+                <button class="carousel-arrow next-arrow">&gt;</button>
+            </div>
+        </section>
+
+        
+  
+<!-- Third Section - Current Offers & Shareholder Meeting -->
+<section class="third-section">
+    <div class="offer-section-container">
+        <div class="offer-card">
+            <div class="offer-text-content">
+                <h2 class="offer-title">Current Offers</h2>
+                <p class="offer-subtitle">Limited inventory. Take delivery today.</p>
+                <a href="#" class="offer-button btn-dark">View Offers</a>
+            </div>
+            <div class="offer-image-container">
+                <img src="/img/group/Group_49.jpg" alt="Current Offers" class="offer-image" onerror="this.style.display='none'">
+            </div>
+        </div>
+
+        <div class="offer-card">
+            <div class="offer-text-content">
+                <h2 class="offer-title">Annual Shareholder Meeting</h2>
+                <p class="offer-subtitle">The future of Tesla is in your hands.<br>Learn why your vote matters.</p>
+                <a href="#" class="offer-button btn-light">Learn More</a>
+            </div>
+            <div class="offer-image-container">
+                <img src="/img/robovan/Robovan_70.jpg" alt="Shareholder Meeting" class="offer-image" onerror="this.style.display='none'">
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Fourth Section - Energy Products Carousel -->
+<section class="energy-carousel-section">
+    <div class="energy-carousel-container">
+        <!-- Solar Panels Card -->
+        <div class="energy-card active">
+            <div class="energy-image-container">
+                <img src="https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Homepage-Card-Solar-Panels-Desktop-v2.jpg" alt="Solar Panels">
+            </div>
+            <div class="energy-content">
+                <h2>Solar Panels</h2>
+                <p>Power Your Home and Reduce Your Electricity Bill</p>
+                <div class="energy-buttons">
+                    <a href="solar-panels.html" class="energy-btn btn-dark">Order Now</a>
+                    <a href="about.html" class="energy-btn btn-light">Learn More</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Powerwall Card -->
+        <div class="energy-card">
+            <div class="energy-image-container">
+                <img src="https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Homepage-Powerwall-Desktop.jpg" alt="Powerwall">
+            </div>
+            <div class="energy-content">
+                <h2>Powerwall</h2>
+                <p>Keep Your Lights On During Outages</p>
+                <div class="energy-buttons">
+                    <a href="shop.html" class="energy-btn btn-dark">Order Now</a>
+                    <a href="about.html" class="energy-btn btn-light">Learn More</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Megapack Card -->
+        <div class="energy-card">
+            <div class="energy-image-container">
+                <img src="https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Homepage-Card-Megapack-Desktop-v2.jpg" alt="Megapack">
+            </div>
+            <div class="energy-content">
+                <h2>Megapack</h2>
+                <p>Massive Batteries for Massive Energy Support</p>
+                <div class="energy-buttons">
+                    <a href="shop.html" class="energy-btn btn-dark">Order Now</a>
+                    <a href="about.html" class="energy-btn btn-light">Learn More</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Solar Roof Card -->
+        <div class="energy-card">
+            <div class="energy-image-container">
+                <img src="https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Homepage-Card-Solar-Roof-Desktop.png" alt="Solar Roof">
+            </div>
+            <div class="energy-content">
+                <h2>Solar Roof</h2>
+                <p>Generate Clean Energy With Your Roof</p>
+                <div class="energy-buttons">
+                    <a href="solar-roof.html" class="energy-btn btn-dark">Order Now</a>
+                    <a href="about.html" class="energy-btn btn-light">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="energy-carousel-navigation">
+        <button class="energy-arrow prev-energy-arrow">&lt;</button>
+        <button class="energy-arrow next-energy-arrow">&gt;</button>
+    </div>
+    
+    <div class="energy-indicators">
+        <span class="energy-indicator active" data-slide="0"></span>
+        <span class="energy-indicator" data-slide="1"></span>
+        <span class="energy-indicator" data-slide="2"></span>
+        <span class="energy-indicator" data-slide="3"></span>
+    </div>
+</section>
+
+     
+     
+        <footer class="footer">
+            <div class="footer-links-container">
+                <span class="copyright-text">Tesla © 2024</span>
+                <a href="#">Privacy & Legal</a>
+                <a href="#">Vehicle Recalls</a>
+                <a href="contact.html">Contact</a>
+                <a href="#">News</a>
+                <a href="#">Get Updates</a>
+                <a href="#">Locations</a>
+            </div>
+        </footer>
+    </main>
+
+</body>
+</html>

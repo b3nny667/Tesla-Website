@@ -1,0 +1,1709 @@
+/* Base styles */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #171a20; /* Dark gray text */
+}
+
+/* ****************************************************** */
+/* 1. Navbar and Layout Styles (Fixed Header & Dropdown) */
+/* ****************************************************** */
+
+.navbar {
+    position: fixed;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    z-index: 50;
+    top: 0;
+    left: 0;
+    height: 64px; 
+}
+
+.nav-container {
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding-left: 16px; 
+    padding-right: 16px; 
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px; 
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.logo-img {
+    height: 14px; 
+}
+
+/* Desktop Menu (Center) */
+.desktop-menu {
+    display: none;
+}
+@media (min-width: 768px) {
+    .desktop-menu {
+        display: flex;
+        gap: 32px; 
+        font-size: 14px; 
+        font-weight: 500; 
+    }
+}
+
+.nav-link {
+    padding: 8px 12px; 
+    border-radius: 6px;
+    transition: background-color 0.2s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.nav-link:hover {
+    background-color: #e5e5e5; 
+}
+
+/* Mobile Menu Toggle Button (HIDES on desktop - FIX 3) */
+.nav-actions .menu-btn { 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 6px;
+    color: #4b5563; 
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    .nav-actions .menu-btn {
+        display: none; /* Hide on desktop */
+    }
+}
+
+.menu-button:hover {
+    color: #111827; 
+    background-color: #f3f4f6; 
+    outline: none;
+}
+
+/* Full-Width Dropdown Fix */
+.dropdown-item {
+    position: relative; 
+    z-index: 50; 
+}
+
+.dropdown-content {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s ease, visibility 0.2s ease; 
+    /* Full screen width positioning */
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    background-color: white; 
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1); 
+    display: flex; 
+    justify-content: center; 
+}
+
+/* This class is added by script.js to show the dropdown after the delay */
+.dropdown-item.dropdown-open .dropdown-content {
+    visibility: visible;
+    opacity: 1;
+}
+
+.dropdown-item:hover .dropdown-content {
+    /* Fallback/Immediate hover effect - primarily controlled by JS for delay */
+    visibility: visible;
+    opacity: 1;
+}
+
+.dropdown-panel-inner {
+    width: 900px;
+    max-width: 90vw;
+    display: flex;
+    gap: 40px;
+    padding: 40px 32px;
+}
+
+.dropdown-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px;
+    border-radius: 8px;
+    transition: background-color 0.15s;
+    text-decoration: none;
+    color: inherit;
+    flex-grow: 1;
+}
+
+.dropdown-link:hover {
+    background-color: #f3f4f6;
+}
+
+/* --- FIX for small cars in dropdown (Robust sizing) --- */
+.vehicle-img { 
+    height: 70px; 
+    min-height: 70px; 
+    width: auto; 
+    display: block; 
+    margin-bottom: 8px; 
+}
+/* -------------------------------------------------------- */
+
+.vehicle-name {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+/* ****************************************************** */
+/* 2. Hero Section Styles (Full-screen sections) */
+/* ****************************************************** */
+.hero-section {
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 64px; /* Space for fixed header */
+    transition: background-image 1.5s ease-in-out; 
+}
+
+/* This targets H1, P, and all A tags inside sections with class .text-dark */
+.text-dark h1, .text-dark p, .text-dark a {
+    color: #171a20;
+}
+
+.hero-content {
+    text-align: center;
+    padding-top: 10vh; /* Push content down from the top */
+}
+
+.hero-content h1 {
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.hero-content p {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.hero-buttons {
+    padding-bottom: 90px; /* Space above footer/next section */
+    display: flex;
+    gap: 25px;
+}
+
+.hero-btn {
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    padding: 12px 60px;
+    border-radius: 20px;
+    transition: background-color 0.2s, color 0.2s;
+    min-width: 250px;
+    text-align: center;
+}
+
+.btn-dark {
+    background-color: rgba(23, 26, 32, 0.8);
+    color: white !important; 
+}
+
+.btn-dark:hover {
+    background-color: #171a20;
+}
+
+.btn-light {
+    background-color: white;
+    color: #171a20;
+}
+
+.btn-light:hover {
+    background-color: #ffffff;
+}
+
+/* ****************************************************** */
+/* 3. Mobile Menu Overlay */
+/* ****************************************************** */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 300px;
+    background-color: white;
+    z-index: 100;
+    padding: 24px;
+    box-shadow: -4px 0 10px rgba(0,0,0,0.1);
+    transform: translateX(100%); 
+    transition: transform 0.3s ease-out; 
+    overflow-y: auto;
+}
+
+.mobile-menu.open {
+    transform: translateX(0); 
+}
+
+.close-btn { 
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #4b5563;
+}
+
+.mobile-menu-links {
+    padding-top: 60px; 
+}
+
+.mobile-menu-links a { 
+    display: block;
+    text-decoration: none;
+    color: #171a20;
+    font-weight: 500;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+.mobile-menu-links a:hover {
+    background-color: #f3f4f6;
+}
+
+.mobile-menu-divider {
+    border-top: 1px solid #e5e5e5;
+    padding-top: 8px;
+    margin-top: 16px;
+}
+
+/* ****************************************************** */
+/* 4. Footer Styles */
+/* ****************************************************** */
+.footer {
+    padding: 30px 24px;
+    text-align: center;
+    background-color: white; 
+    font-size: 12px;
+    color: #5c5e62;
+}
+
+.footer-links-container {
+    display: flex;
+    justify-content: center;
+    gap: 16px; 
+    flex-wrap: wrap;
+}
+
+.footer-links-container a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s;
+}
+
+.footer-links-container a:hover {
+    color: #000000;
+}
+
+/* ------------------------------------------------------------------ */
+/* --- NEW: Two-Column Carousel Section Styling (FIX 1: WHITE BACKGROUND) --- */
+/* ------------------------------------------------------------------ */
+.two-column-carousel-section {
+    position: relative;
+    padding: 40px 20px; 
+    background-color: #fff; /* FIX: Changed to white background */
+    color: #171a20; /* FIX: Changed to dark text */
+    overflow: hidden; 
+}
+
+.two-column-carousel-section .carousel-container {
+    display: flex; 
+    gap: 20px; 
+    padding-bottom: 20px; 
+    scroll-behavior: smooth; 
+    overflow-x: auto; 
+    -webkit-overflow-scrolling: touch; 
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+}
+
+/* Hide scrollbar for Chrome, Safari, Opera */
+.two-column-carousel-section .carousel-container::-webkit-scrollbar {
+    display: none;
+}
+
+.two-column-carousel-section .carousel-card {
+    flex: 0 0 calc(50% - 10px); 
+    max-width: calc(50% - 10px); 
+    background-color: #fff; /* Card background is white */
+    border-radius: 8px; 
+    overflow: hidden; 
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    min-height: 400px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Slight shadow to distinguish cards */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .two-column-carousel-section .carousel-card {
+        flex: 0 0 calc(100% - 10px); 
+        max-width: calc(100% - 10px);
+    }
+}
+
+.two-column-carousel-section .carousel-card .card-image-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 75%; 
+    overflow: hidden;
+}
+
+.two-column-carousel-section .carousel-card img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    object-position: center;
+}
+
+.two-column-carousel-section .carousel-card .card-category {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: rgba(255, 255, 255, 0.6); 
+    color: #171a20; 
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    font-weight: bold;
+    z-index: 10; 
+}
+
+.two-column-carousel-section .carousel-card p {
+    font-size: 1.1em;
+    color: #5c5e62; 
+    margin-bottom: 20px;
+}
+
+.two-column-carousel-section .carousel-card .btn-dark {
+    background-color: #171a20; 
+    color: #fff;
+}
+
+.two-column-carousel-section .carousel-card .btn-dark:hover {
+    background-color: #333;
+}
+
+.two-column-carousel-section .carousel-card .btn-light {
+    background-color: rgba(0, 0, 0, 0.1); 
+    color: #171a20;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.two-column-carousel-section .carousel-card .btn-light:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Carousel Navigation Arrows (Adjusted for white background) */
+.carousel-navigation .carousel-arrow {
+    background-color: rgba(0, 0, 0, 0.3); /* Dark arrows */
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5em;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+    pointer-events: auto; 
+}
+
+.carousel-navigation .carousel-arrow:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* ... other styles ... */
+/* ****************************************************** */
+/* 2. Hero Section Styles (Full-screen sections) */
+/* ****************************************************** */
+.hero-section {
+    height: 100vh;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 64px; /* Space for fixed header */
+    
+    transition: background-image 0.3s ease-in-out; 
+}
+
+/* Two-Column Carousel Section - Fixed */
+.two-column-carousel-section {
+    position: relative;
+    padding: 40px 20px;
+    background-color: #fff;
+    color: #171a20;
+    overflow: hidden;
+}
+
+.two-column-carousel-section .carousel-container {
+    display: flex;
+    gap: 20px;
+    padding-bottom: 20px;
+    scroll-behavior: smooth;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+/* Hide scrollbar */
+.two-column-carousel-section .carousel-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Fixed card sizing and layout */
+.two-column-carousel-section .carousel-card {
+    flex: 0 0 calc(50% - 10px);
+    max-width: calc(50% - 10px);
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 500px; /* Fixed height for consistency */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.two-column-carousel-section .carousel-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .two-column-carousel-section .carousel-card {
+        flex: 0 0 calc(100% - 10px);
+        max-width: calc(100% - 10px);
+        min-height: 450px;
+    }
+}
+
+/* Fixed image container with consistent aspect ratio */
+.two-column-carousel-section .carousel-card .card-image-container {
+    position: relative;
+    width: 100%;
+    height: 300px; /* Fixed height for images */
+    overflow: hidden;
+}
+
+.two-column-carousel-section .carousel-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures images fill container without distortion */
+    object-position: center;
+    transition: transform 0.3s ease;
+}
+
+.two-column-carousel-section .carousel-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Fixed category label */
+.two-column-carousel-section .carousel-card .card-category {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #171a20;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    font-weight: bold;
+    z-index: 10;
+}
+
+/* Fixed card content */
+.two-column-carousel-section .carousel-card .card-content {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.two-column-carousel-section .carousel-card h2 {
+    font-size: 1.5em;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.two-column-carousel-section .carousel-card p {
+    font-size: 1em;
+    color: #5c5e62;
+    margin-bottom: 20px;
+}
+
+/* Fixed button styling */
+.two-column-carousel-section .carousel-card .card-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.two-column-carousel-section .carousel-card .card-btn {
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    padding: 10px 24px;
+    border-radius: 20px;
+    transition: all 0.2s;
+    text-align: center;
+    flex: 1;
+}
+
+.two-column-carousel-section .carousel-card .btn-dark {
+    background-color: #171a20;
+    color: #fff;
+}
+
+.two-column-carousel-section .carousel-card .btn-dark:hover {
+    background-color: #333;
+}
+
+.two-column-carousel-section .carousel-card .btn-light {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #171a20;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.two-column-carousel-section .carousel-card .btn-light:hover {
+    background-color: #fff;
+}
+
+/* Fixed navigation arrows */
+.carousel-navigation {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    pointer-events: none;
+    padding: 0 20px;
+}
+
+.carousel-navigation .carousel-arrow {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2em;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+    pointer-events: auto;
+}
+
+.carousel-navigation .carousel-arrow:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Hero section background fix */
+.hero-section {
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 64px;
+    transition: background-image 0.5s ease-in-out;
+}
+/* Fixed Tesla Logo Size */
+.nav-logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.logo-img {
+    height: 70px; /* Increased from 14px to 24px */
+    width: auto; /* Maintain aspect ratio */
+}
+
+/* Optional: Even larger for better visibility */
+@media (min-width: 768px) {
+    .logo-img {
+        height: 70px; /* Slightly larger on desktop */
+    }
+}
+/* Third Section Styles */
+.third-section {
+    padding: 60px 20px;
+    background-color: #fff;
+}
+
+.third-section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+@media (min-width: 768px) {
+    .third-section-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+}
+
+.offer-card {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 12px;
+    padding: 40px 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid #e5e5e5;
+    position: relative;
+    overflow: hidden;
+}
+
+.offer-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #e31837, #cc0000);
+}
+
+.offer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.shareholder-card {
+    background: linear-gradient(135deg, #000000 0%, #333333 100%);
+    color: white;
+}
+
+.shareholder-card::before {
+    background: linear-gradient(90deg, #00a2ff, #007bff);
+}
+
+.offer-content {
+    position: relative;
+    z-index: 2;
+}
+
+.offer-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #171a20;
+}
+
+.shareholder-card .offer-title {
+    color: white;
+}
+
+.offer-subtitle {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    color: #5c5e62;
+}
+
+.shareholder-card .offer-subtitle {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.offer-button {
+    display: inline-block;
+    padding: 12px 32px;
+    background-color: #171a20;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    border: 2px solid #171a20;
+}
+
+.offer-button:hover {
+    background-color: transparent;
+    color: #171a20;
+}
+
+.shareholder-card .offer-button {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+}
+
+.shareholder-card .offer-button:hover {
+    background-color: transparent;
+    color: white;
+    border-color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+    .third-section {
+        padding: 40px 20px;
+    }
+    
+    .offer-card {
+        padding: 30px 20px;
+    }
+    
+    .offer-title {
+        font-size: 24px;
+    }
+    
+    .offer-subtitle {
+        font-size: 15px;
+    }
+}
+/* Third Section Styles */
+.third-section {
+    padding: 60px 20px;
+    background-color: #fff;
+}
+
+.third-section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+@media (min-width: 768px) {
+    .third-section-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+}
+
+.offer-card {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 12px;
+    padding: 40px 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid #e5e5e5;
+    position: relative;
+    overflow: hidden;
+}
+
+.offer-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #e31837, #cc0000);
+}
+
+.offer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.shareholder-card {
+    background: linear-gradient(135deg, #000000 0%, #333333 100%);
+    color: white;
+}
+
+.shareholder-card::before {
+    background: linear-gradient(90deg, #00a2ff, #007bff);
+}
+
+.offer-content {
+    position: relative;
+    z-index: 2;
+}
+
+.offer-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #171a20;
+}
+
+.shareholder-card .offer-title {
+    color: white;
+}
+
+.offer-subtitle {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    color: #5c5e62;
+}
+
+.shareholder-card .offer-subtitle {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.offer-button {
+    display: inline-block;
+    padding: 12px 32px;
+    background-color: #171a20;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    border: 2px solid #171a20;
+}
+
+.offer-button:hover {
+    background-color: transparent;
+    color: #171a20;
+}
+
+.shareholder-card .offer-button {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+}
+
+.shareholder-card .offer-button:hover {
+    background-color: transparent;
+    color: white;
+    border-color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+    .third-section {
+        padding: 40px 20px;
+    }
+    
+    .offer-card {
+        padding: 30px 20px;
+    }
+    
+    .offer-title {
+        font-size: 24px;
+    }
+    
+    .offer-subtitle {
+        font-size: 15px;
+    }
+}
+/* ****************************************************** */
+/* 3. Current Offers / News Section Styles */
+/* ****************************************************** */
+
+.offer-section-container {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    gap: 30px;
+    grid-template-columns: 1fr; /* Default: Single column on mobile */
+}
+
+@media (min-width: 768px) {
+    .offer-section-container {
+        /* Desktop: Two equal columns */
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.offer-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    min-height: 400px;
+    background-color: #f4f4f4; /* Light gray background for default card */
+    
+    /* Internal Layout: Text content on left, Image on right (60%/40%) */
+    display: flex; 
+}
+
+.offer-text-content {
+    /* Takes up 60% of the card width */
+    width: 60%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    
+    /* Ensure text is readable over default light background */
+    color: #171a20; 
+    z-index: 1; 
+}
+
+.offer-image-container {
+    /* Takes up 40% of the card width */
+    width: 40%;
+    height: 100%;
+}
+
+.offer-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* --- TEXT STYLES --- */
+
+.offer-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.offer-subtitle {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    color: #5c5e62; /* Slightly lighter text for subtitles */
+}
+
+/* --- BUTTON STYLES --- */
+
+.offer-button {
+    display: inline-block;
+    padding: 12px 32px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-dark {
+    background-color: #171a20;
+    color: white;
+}
+.btn-dark:hover {
+    background-color: #000000;
+}
+
+.btn-light {
+    background-color: white;
+    color: #171a20;
+}
+.btn-light:hover {
+    background-color: #e6e6e6;
+}
+
+/* ******************************************* */
+/* 5. Offers and Shareholder Section Styles (Split Layout, White Text for Dark Card) */
+/* ******************************************* */
+
+.offer-section-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 0 24px 60px; /* Mobile padding */
+    max-width: 1600px; /* Wider content area */
+    margin: 0 auto;
+}
+
+@media (min-width: 1024px) {
+    .offer-section-container {
+        grid-template-columns: 1fr 1fr;
+        padding: 0 20px 80px; 
+        gap: 24px;
+    }
+}
+
+/* ALL CARD STYLES */
+.offer-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    min-height: 250px;
+    text-align: left;
+    background-color: white; 
+    color: #171a20; 
+    border: 1px solid #e0e0e0; 
+    
+    /* Layout for split design: Text (L) | Image (R) */
+    display: flex;
+    flex-direction: column; /* Mobile: Stack image above text */
+}
+
+@media (min-width: 768px) {
+    .offer-card {
+        flex-direction: row; /* Desktop: Text Left, Image Right */
+    }
+}
+
+/* Text Content for ALL cards */
+.offer-card .offer-text-content {
+    position: relative;
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    
+    padding: 40px 30px; 
+    background: none; 
+    color: #171a20; 
+}
+
+/* *** FIX: White Text for the Shareholder Card (which loads a dark image) *** */
+.shareholder-card .offer-text-content {
+    color: white !important;
+    text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5); /* Helps text stand out */
+}
+
+.shareholder-card .offer-title,
+.shareholder-card .offer-subtitle {
+    color: white !important;
+}
+
+
+/* Image Container for ALL cards */
+.offer-card .offer-image-container {
+    position: relative; 
+    flex: 1; 
+    min-height: 150px;
+}
+
+/* Image Styles */
+.offer-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* Text Size Changes (Applied to both cards) */
+.offer-card .offer-title {
+    font-size: 28px; 
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.offer-card .offer-subtitle {
+    font-size: 16px; 
+    line-height: 1.4;
+    margin-bottom: 25px;
+    color: #5c5e62;
+}
+
+.shareholder-card .offer-subtitle {
+    /* Revert subtitle color to white for dark card */
+    color: white !important;
+}
+
+/* Button Styles */
+.offer-button {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 13px; 
+    letter-spacing: 0.5px;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    position: relative; 
+    align-self: flex-start; 
+    min-width: 200px;
+}
+
+/* Style for the Dark Button (Used for "View Offers") */
+.btn-dark {
+    background-color: #171a20;
+    color: white;
+    border: 2px solid transparent;
+}
+
+.btn-dark:hover {
+    background-color: #3d4147;
+}
+
+/* *** FIX: Style for the Light Button (Used for "Learn More" - Made transparent/white for dark card) *** */
+.btn-light {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white; 
+}
+
+.btn-light:hover {
+    background-color: white;
+    color: #171a20;
+    border-color: white;
+}
+/* Third Section - Fixed Cards */
+.third-section {
+    padding: 60px 20px;
+    background-color: #fff;
+}
+
+.offer-section-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 0 24px 60px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+@media (min-width: 1024px) {
+    .offer-section-container {
+        grid-template-columns: 1fr 1fr;
+        padding: 0 20px 80px;
+        gap: 24px;
+    }
+}
+
+/* Both cards with white background */
+.offer-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    min-height: 250px;
+    text-align: left;
+    background-color: white !important; /* Force white background */
+    color: #171a20 !important; /* Force black text */
+    border: 1px solid #e0e0e0;
+    
+    /* Layout for split design: Text (L) | Image (R) */
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 768px) {
+    .offer-card {
+        flex-direction: row; /* Desktop: Text Left, Image Right */
+    }
+}
+
+/* Text Content for both cards */
+.offer-card .offer-text-content {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    
+    padding: 40px 30px;
+    background: none;
+    color: #171a20 !important; /* Black text */
+}
+
+/* Remove any dark background classes */
+.offer-card.shareholder-card,
+.offer-card:not(.shareholder-card) {
+    background-color: white !important;
+    color: #171a20 !important;
+}
+
+/* Title and subtitle styling */
+.offer-card .offer-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: #171a20 !important; /* Black text */
+}
+
+.offer-card .offer-subtitle {
+    font-size: 16px;
+    line-height: 1.4;
+    margin-bottom: 25px;
+    color: #5c5e62 !important; /* Dark gray for subtitles */
+}
+
+/* Image Container for both cards */
+.offer-card .offer-image-container {
+    position: relative;
+    flex: 1;
+    min-height: 150px;
+    background-color: #f5f5f5; /* Light gray fallback if image doesn't load */
+}
+
+/* Image Styles */
+.offer-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Button Styles */
+.offer-button {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    position: relative;
+    align-self: flex-start;
+    min-width: 200px;
+}
+
+/* Dark Button for "View Offers" */
+.btn-dark {
+    background-color: #171a20;
+    color: white;
+    border: 2px solid transparent;
+}
+
+.btn-dark:hover {
+    background-color: #3d4147;
+}
+
+/* Light Button for "Learn More" - now with dark styling */
+.btn-light {
+    background-color: transparent;
+    color: #171a20 !important; /* Black text */
+    border: 2px solid #171a20; /* Black border */
+}
+
+.btn-light:hover {
+    background-color: #171a20;
+    color: white !important;
+    border-color: #171a20;
+}
+/* Fourth Section - Two Column Layout */
+.fsd-two-column-section {
+    padding: 80px 20px;
+    background-color: white;
+}
+
+.fsd-main-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    min-height: 600px;
+}
+
+/* Left Column with Background Image */
+.fsd-left-column {
+    background-image: url('https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Homepage-FSD-Desktop.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 12px;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.fsd-left-column::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+   /* background: rgba(0, 0, 0, 0.3);*/
+    border-radius: 12px;
+}
+
+.fsd-left-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.fsd-left-content h2 {
+    color: white;
+    font-size: 48px;
+    font-weight: 700;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    margin: 0;
+}
+
+/* Right Column with Card */
+.fsd-right-column {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.fsd-card {
+    background: white;
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.fsd-card h3 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #171a20;
+    margin-bottom: 30px;
+}
+
+.fsd-card-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.fsd-card-btn {
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 12px 24px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    text-align: center;
+    border: 2px solid transparent;
+}
+
+.demo-btn {
+    background-color: #171a20;
+    color: white;
+    border-color: #171a20;
+}
+
+.demo-btn:hover {
+    background-color: #3d4147;
+    border-color: #3d4147;
+}
+
+.learn-btn {
+    background-color: transparent;
+    color: #171a20;
+    border-color: #171a20;
+}
+
+.learn-btn:hover {
+    background-color: #171a20;
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .fsd-main-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        min-height: auto;
+    }
+    
+    .fsd-left-column {
+        height: 400px;
+    }
+    
+    .fsd-left-content h2 {
+        font-size: 36px;
+    }
+    
+    .fsd-right-column {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .fsd-two-column-section {
+        padding: 60px 20px;
+    }
+    
+    .fsd-left-column {
+        height: 300px;
+    }
+    
+    .fsd-left-content h2 {
+        font-size: 28px;
+    }
+    
+    .fsd-card {
+        padding: 30px 20px;
+    }
+    
+    .fsd-card h3 {
+        font-size: 20px;
+    }
+}
+
+.fsd-left-column {
+    position: relative;
+    width: 50%;
+    /* 💡 FIX 1: Make the column take up the full height of its parent (fsd-container) */
+    height: 100%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* 💡 FIX 2: REMOVE THE BACKGROUND COLOR that was blocking the view */
+    /* background-color: #f4f4f4; <--- DELETE THIS LINE */
+    z-index: 2;
+    overflow: hidden;
+}
+/* Energy Products Carousel Section */
+.energy-carousel-section {
+    position: relative;
+    padding: 80px 20px;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.energy-carousel-container {
+    display: flex;
+    gap: 20px;
+    padding-bottom: 20px;
+    scroll-behavior: smooth;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+/* Hide scrollbar */
+.energy-carousel-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Energy Card Styles */
+.energy-card {
+    flex: 0 0 calc(50% - 10px);
+    max-width: calc(50% - 10px);
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 500px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.energy-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .energy-card {
+        flex: 0 0 calc(100% - 10px);
+        max-width: calc(100% - 10px);
+        min-height: 450px;
+    }
+}
+
+/* Image container */
+.energy-card .energy-image-container {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+.energy-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.3s ease;
+}
+
+.energy-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Content area */
+.energy-card .energy-content {
+    padding: 30px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.energy-card h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #171a20;
+}
+
+.energy-card p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #5c5e62;
+    margin-bottom: 25px;
+}
+
+/* Button styles */
+.energy-card .energy-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.energy-card .energy-btn {
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    padding: 10px 24px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    text-align: center;
+    min-width: 120px;
+}
+
+.energy-card .btn-dark {
+    background-color: #171a20;
+    color: #fff;
+    border: 2px solid #171a20;
+}
+
+.energy-card .btn-dark:hover {
+    background-color: #3d4147;
+    border-color: #3d4147;
+}
+
+.energy-card .btn-light {
+    background-color: transparent;
+    color: #171a20;
+    border: 2px solid #171a20;
+}
+
+.energy-card .btn-light:hover {
+    background-color: #171a20;
+    color: #fff;
+}
+
+/* Navigation arrows */
+.energy-carousel-navigation {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    pointer-events: none;
+    padding: 0 20px;
+}
+
+.energy-carousel-navigation .energy-arrow {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2em;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+    pointer-events: auto;
+}
+
+.energy-carousel-navigation .energy-arrow:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Indicators */
+.energy-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.energy-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #d1d5db;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.energy-indicator.active {
+    background-color: #171a20;
+    transform: scale(1.2);
+}
+
+.energy-indicator:hover {
+    background-color: #6b7280;
+}
