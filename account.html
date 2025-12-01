@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account | Tesla</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --tesla-red: #e31837;
+            --tesla-dark: #171a20;
+            --tesla-light: #f4f4f4;
+            --tesla-gray: #5c5e62;
+            --tesla-blue: #3457b1;
+            --primary-color: #e31837;
+            --secondary-color: #171a20;
+            --accent-color: #ff6b6b;
+            --gradient-primary: linear-gradient(135deg, #e31837 0%, #ff6b6b 100%);
+            --gradient-secondary: linear-gradient(135deg, #171a20 0%, #2a2a2a 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #fff;
+            color: var(--tesla-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Navigation - EXACTLY like index.html */
+        .navbar {
+            position: fixed;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            z-index: 50;
+            top: 0;
+            left: 0;
+            height: 64px; 
+        }
+
+        .nav-container {
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding-left: 16px; 
+            padding-right: 16px; 
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px; 
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .logo-img {
+            height: 70px;
+            width: auto;
+        }
+
+        /* Desktop Menu (Center) */
+        .desktop-menu {
+            display: none;
+        }
+        @media (min-width: 768px) {
+            .desktop-menu {
+                display: flex;
+                gap: 32px; 
+                font-size: 14px; 
+                font-weight: 500; 
+            }
+        }
+
+        .nav-link {
+            padding: 8px 12px; 
+            border-radius: 6px;
+            transition: background-color 0.2s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .nav-link:hover {
+            background-color: #e5e5e5; 
+        }
+
+        /* Mobile Menu Toggle Button */
+        .nav-actions .menu-btn { 
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+            border-radius: 6px;
+            color: #4b5563; 
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+
+        @media (min-width: 768px) {
+            .nav-actions .menu-btn {
+                display: none; /* Hide on desktop */
+            }
+        }
+
+        /* Full-Width Dropdown Fix */
+        .dropdown-item {
+            position: relative; 
+            z-index: 50; 
+        }
+
+        .dropdown-content {
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.2s ease, visibility 0.2s ease; 
+            /* Full screen width positioning */
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100vw;
+            background-color: white; 
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1); 
+            display: flex; 
+            justify-content: center; 
+        }
+
+        /* This class is added by script.js to show the dropdown after the delay */
+        .dropdown-item.dropdown-open .dropdown-content {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .dropdown-item:hover .dropdown-content {
+            /* Fallback/Immediate hover effect - primarily controlled by JS for delay */
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .dropdown-panel-inner {
+            width: 900px;
+            max-width: 90vw;
+            display: flex;
+            gap: 40px;
+            padding: 40px 32px;
+        }
+
+        .dropdown-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 12px;
+            border-radius: 8px;
+            transition: background-color 0.15s;
+            text-decoration: none;
+            color: inherit;
+            flex-grow: 1;
+        }
+
+        .dropdown-link:hover {
+            background-color: #f3f4f6;
+        }
+
+        /* FIX for small cars in dropdown (Robust sizing) */
+        .vehicle-img { 
+            height: 70px; 
+            min-height: 70px; 
+            width: auto; 
+            display: block; 
+            margin-bottom: 8px; 
+        }
+
+        .vehicle-name {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100vh;
+            width: 300px;
+            background-color: white;
+            z-index: 100;
+            padding: 24px;
+            box-shadow: -4px 0 10px rgba(0,0,0,0.1);
+            transform: translateX(100%); 
+            transition: transform 0.3s ease-out; 
+            overflow-y: auto;
+        }
+
+        .mobile-menu.open {
+            transform: translateX(0); 
+        }
+
+        .close-btn { 
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #4b5563;
+        }
+
+        .mobile-menu-links {
+            padding-top: 60px; 
+        }
+
+        .mobile-menu-links a { 
+            display: block;
+            text-decoration: none;
+            color: #171a20;
+            font-weight: 500;
+            padding: 10px 14px;
+            margin-bottom: 8px;
+            border-radius: 6px;
+            transition: background-color 0.2s;
+        }
+
+        .mobile-menu-links a:hover {
+            background-color: #f3f4f6;
+        }
+
+        .mobile-menu-divider {
+            border-top: 1px solid #e5e5e5;
+            padding-top: 8px;
+            margin-top: 16px;
+        }
+
+        /* ACCOUNT PAGE STYLES */
+        .account-hero {
+            height: 40vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), 
+                        url('https://images.unsplash.com/photo-1560958089-b8a1929cea89?ixlib=rb-4.0.3&auto=format&fit=crop&w=2071&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .account-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 50px;
+        }
+
+        @media (max-width: 968px) {
+            .account-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Account Sidebar */
+        .account-sidebar {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 30px;
+            height: fit-content;
+        }
+
+        .user-profile {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .user-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: var(--tesla-red);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 2.5rem;
+        }
+
+        .user-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .user-email {
+            color: var(--tesla-gray);
+            font-size: 0.9rem;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .menu-item {
+            margin-bottom: 10px;
+        }
+
+        .menu-link {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            text-decoration: none;
+            color: var(--tesla-dark);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .menu-link:hover, .menu-link.active {
+            background: white;
+            color: var(--tesla-red);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .menu-icon {
+            font-size: 1.2rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Account Content */
+        .account-content {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+
+        .content-section {
+            display: none;
+            padding: 40px;
+        }
+
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: var(--tesla-dark);
+        }
+
+        /* Profile Section */
+        .profile-form {
+            max-width: 600px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--tesla-dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--tesla-red);
+            box-shadow: 0 0 0 3px rgba(227, 24, 55, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .btn-primary {
+            background: var(--tesla-dark);
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: var(--tesla-red);
+            transform: translateY(-2px);
+        }
+
+        /* Vehicles Section */
+        .vehicles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .vehicle-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .vehicle-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .vehicle-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .vehicle-content {
+            padding: 25px;
+        }
+
+        .vehicle-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .vehicle-details {
+            color: var(--tesla-gray);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .vehicle-status {
+            display: inline-block;
+            padding: 5px 12px;
+            background: var(--tesla-red);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .vehicle-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--tesla-dark);
+            border: 1px solid #d1d5db;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 1;
+            text-align: center;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--tesla-red);
+            color: var(--tesla-red);
+        }
+
+        /* Orders Section */
+        .orders-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .order-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .order-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .order-info h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .order-date {
+            color: var(--tesla-gray);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .order-status {
+            display: inline-block;
+            padding: 5px 12px;
+            background: #10b981;
+            color: white;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .order-amount {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--tesla-red);
+        }
+
+        /* Charging Section */
+        .charging-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--tesla-red);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: var(--tesla-gray);
+            font-size: 0.9rem;
+        }
+
+        .supercharger-map {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .map-placeholder {
+            background: #e5e5e5;
+            height: 300px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--tesla-gray);
+            margin-bottom: 20px;
+        }
+
+        /* Support Section */
+        .support-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .support-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .support-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .support-icon {
+            font-size: 2.5rem;
+            color: var(--tesla-red);
+            margin-bottom: 20px;
+        }
+
+        .support-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .support-description {
+            color: var(--tesla-gray);
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 30px 24px;
+            text-align: center;
+            background-color: #000;
+            font-size: 12px;
+            color: #5c5e62;
+            border-top: 1px solid #333;
+        }
+
+        .footer-links-container {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links-container a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        .footer-links-container a:hover {
+            color: #ffffff;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .vehicles-grid,
+            .charging-stats,
+            .support-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .order-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body class="scroll-smooth">
+    <!-- Navigation - EXACTLY like index.html -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-content">
+                
+                <div class="nav-logo">
+                    <a href="index.html">
+                        <img src="/img/logo.png" alt="Tesla Logo" class="logo-img">
+                    </a>
+                </div>
+                
+                <div class="desktop-menu">
+                    
+                    <div class="dropdown-item">
+                        <a href="#" class="nav-link">Vehicles</a>
+                        
+                        <div class="dropdown-content">
+                            <div class="dropdown-panel-inner">
+                                <a href="model-s.html" class="dropdown-link">
+                                    <img src="/img/avif/model s avif.avif" alt="Model S" class="vehicle-img">
+                                    <span class="vehicle-name">Model S</span>
+                                </a>
+                                <a href="model-3.html" class="dropdown-link">
+                                    <img src="/img/avif/model 3 avif.avif" alt="Model 3" class="vehicle-img">
+                                    <span class="vehicle-name">Model 3</span>
+                                </a>
+                                <a href="model-x.html" class="dropdown-link">
+                                    <img src="/img/avif/model x avif.avif" alt="Model X" class="vehicle-img">
+                                    <span class="vehicle-name">Model X</span>
+                                </a>
+                                <a href="model-y.html" class="dropdown-link">
+                                    <img src="/img/avif/model y avif.avif" alt="Model Y" class="vehicle-img">
+                                    <span class="vehicle-name">Model Y</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="solar-roof.html" class="nav-link">Solar Roof</a>
+                    <a href="solar-panels.html" class="nav-link">Solar Panels</a>
+                    <a href="shop.html" class="nav-link">Shop</a>
+                </div>
+                
+                <div class="nav-actions">
+                    <a href="account.html" class="nav-link nav-icon-link"><i class="fas fa-user-circle"></i></a>
+                    <button class="menu-btn" id="mobile-menu-button">Menu</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+        <button class="close-btn" id="close-menu"><i class="fas fa-times"></i></button>
+        <div class="mobile-menu-links">
+            <a href="model-s.html">Model S</a>
+            <a href="model-3.html">Model 3</a>
+            <a href="model-x.html">Model X</a>
+            <a href="model-y.html">Model Y</a>
+            <a href="solar-roof.html">Solar Roof</a>
+            <a href="solar-panels.html">Solar Panels</a>
+            <a href="shop.html">Shop</a>
+            <a href="account.html">Account</a>
+            <div class="mobile-menu-divider"></div>
+            <a href="https://www.tesla.com/support">Services</a>
+            <a href="https://www.tesla.com/about">About</a>
+            <a href="https://www.tesla.com/contact">Contact</a>
+            <a href="test-drive.html">Demo Drive</a>
+        </div>
+    </div>
+
+    <!-- Account Hero Section -->
+    <section class="account-hero">
+        <div class="hero-content">
+            <h1 class="fade-in">YOUR ACCOUNT</h1>
+            <p class="fade-in">Manage your Tesla products and preferences</p>
+        </div>
+    </section>
+
+    <!-- Account Container -->
+    <div class="account-container">
+        <!-- Account Sidebar -->
+        <div class="account-sidebar">
+            <div class="user-profile">
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h2 class="user-name">John Tesla</h2>
+                <p class="user-email">john.tesla@example.com</p>
+            </div>
+            
+            <ul class="sidebar-menu">
+                <li class="menu-item">
+                    <a href="#" class="menu-link active" data-section="profile">
+                        <span class="menu-icon"><i class="fas fa-user"></i></span>
+                        <span>Profile</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#" class="menu-link" data-section="vehicles">
+                        <span class="menu-icon"><i class="fas fa-car"></i></span>
+                        <span>My Vehicles</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#" class="menu-link" data-section="orders">
+                        <span class="menu-icon"><i class="fas fa-shopping-bag"></i></span>
+                        <span>Order History</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#" class="menu-link" data-section="charging">
+                        <span class="menu-icon"><i class="fas fa-charging-station"></i></span>
+                        <span>Charging</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#" class="menu-link" data-section="support">
+                        <span class="menu-icon"><i class="fas fa-headset"></i></span>
+                        <span>Support</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#" class="menu-link" data-section="settings">
+                        <span class="menu-icon"><i class="fas fa-cog"></i></span>
+                        <span>Settings</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Account Content -->
+        <div class="account-content">
+            <!-- Profile Section -->
+            <div class="content-section active" id="profile-section">
+                <h2 class="section-title">Profile Information</h2>
+                <form class="profile-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="firstName">First Name</label>
+                            <input type="text" id="firstName" class="form-control" value="John">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="lastName">Last Name</label>
+                            <input type="text" id="lastName" class="form-control" value="Tesla">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" value="john.tesla@example.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="phone">Phone Number</label>
+                        <input type="tel" id="phone" class="form-control" value="+1 (555) 123-4567">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="address">Address</label>
+                        <input type="text" id="address" class="form-control" value="3500 Deer Creek Road, Palo Alto, CA">
+                    </div>
+                    
+                    <button type="submit" class="btn-primary">Save Changes</button>
+                </form>
+            </div>
+            
+            <!-- Vehicles Section -->
+            <div class="content-section" id="vehicles-section">
+                <h2 class="section-title">My Vehicles</h2>
+                <div class="vehicles-grid">
+                    <div class="vehicle-card">
+                        <img src="https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Homepage-Model-S-Desktop-LHD.jpg" alt="Model S" class="vehicle-image">
+                        <div class="vehicle-content">
+                            <h3 class="vehicle-name">Model S Plaid</h3>
+                            <p class="vehicle-details">VIN: 5YJSA1E64MF123456 • Delivered: March 2023</p>
+                            <span class="vehicle-status">Active</span>
+                            <div class="vehicle-actions">
+                                <a href="#" class="btn-secondary">View Details</a>
+                                <a href="#" class="btn-secondary">Schedule Service</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="vehicle-card">
+                        <img src="https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Homepage-Model-3-Desktop-NA.jpg" alt="Model 3" class="vehicle-image">
+                        <div class="vehicle-content">
+                            <h3 class="vehicle-name">Model 3 Long Range</h3>
+                            <p class="vehicle-details">VIN: 5YJ3E1EA0MF654321 • Delivered: January 2022</p>
+                            <span class="vehicle-status">Active</span>
+                            <div class="vehicle-actions">
+                                <a href="#" class="btn-secondary">View Details</a>
+                                <a href="#" class="btn-secondary">Schedule Service</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Orders Section -->
+            <div class="content-section" id="orders-section">
+                <h2 class="section-title">Order History</h2>
+                <div class="orders-list">
+                    <div class="order-card">
+                        <div class="order-info">
+                            <h3>Model S Plaid</h3>
+                            <p class="order-date">Ordered: February 15, 2023</p>
+                            <span class="order-status">Delivered</span>
+                        </div>
+                        <div class="order-amount">$94,990</div>
+                    </div>
+                    
+                    <div class="order-card">
+                        <div class="order-info">
+                            <h3>Wall Connector</h3>
+                            <p class="order-date">Ordered: January 10, 2023</p>
+                            <span class="order-status">Delivered</span>
+                        </div>
+                        <div class="order-amount">$550</div>
+                    </div>
+                    
+                    <div class="order-card">
+                        <div class="order-info">
+                            <h3>All-Weather Interior Liners</h3>
+                            <p class="order-date">Ordered: December 5, 2022</p>
+                            <span class="order-status">Delivered</span>
+                        </div>
+                        <div class="order-amount">$225</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Charging Section -->
+            <div class="content-section" id="charging-section">
+                <h2 class="section-title">Charging Stats</h2>
+                <div class="charging-stats">
+                    <div class="stat-card">
+                        <div class="stat-value">1,247</div>
+                        <div class="stat-label">Total Charges</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">8,542</div>
+                        <div class="stat-label">kWh Used</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">$1,284</div>
+                        <div class="stat-label">Total Savings</div>
+                    </div>
+                </div>
+                
+                <div class="supercharger-map">
+                    <h3>Nearby Superchargers</h3>
+                    <div class="map-placeholder">
+                        <i class="fas fa-map-marked-alt" style="font-size: 3rem;"></i>
+                    </div>
+                    <p>Find Superchargers along your route and monitor charging status</p>
+                    <button class="btn-primary" style="margin-top: 20px;">View Charging Map</button>
+                </div>
+            </div>
+            
+            <!-- Support Section -->
+            <div class="content-section" id="support-section">
+                <h2 class="section-title">Support & Service</h2>
+                <div class="support-options">
+                    <div class="support-card">
+                        <div class="support-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3 class="support-title">Schedule Service</h3>
+                        <p class="support-description">Book maintenance or repairs for your Tesla</p>
+                        <button class="btn-secondary">Schedule Now</button>
+                    </div>
+                    
+                    <div class="support-card">
+                        <div class="support-icon">
+                            <i class="fas fa-question-circle"></i>
+                        </div>
+                        <h3 class="support-title">Help Center</h3>
+                        <p class="support-description">Find answers to common questions</p>
+                        <button class="btn-secondary">Browse Articles</button>
+                    </div>
+                    
+                    <div class="support-card">
+                        <div class="support-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3 class="support-title">Contact Support</h3>
+                        <p class="support-description">Get in touch with our support team</p>
+                        <button class="btn-secondary">Contact Us</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Settings Section -->
+            <div class="content-section" id="settings-section">
+                <h2 class="section-title">Account Settings</h2>
+                <div class="profile-form">
+                    <div class="form-group">
+                        <label class="form-label">Communication Preferences</label>
+                        <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 10px;">
+                            <label style="display: flex; align-items: center; gap: 10px;">
+                                <input type="checkbox" checked>
+                                <span>Product updates and news</span>
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 10px;">
+                                <input type="checkbox" checked>
+                                <span>Charging notifications</span>
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 10px;">
+                                <input type="checkbox">
+                                <span>Marketing communications</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Privacy Settings</label>
+                        <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 10px;">
+                            <label style="display: flex; align-items: center; gap: 10px;">
+                                <input type="checkbox" checked>
+                                <span>Share vehicle data for improvements</span>
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 10px;">
+                                <input type="checkbox">
+                                <span>Allow personalized recommendations</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary">Save Preferences</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links-container">
+            <span class="copyright-text">Tesla © 2024</span>
+            <a href="https://www.tesla.com/legal">Privacy & Legal</a>
+            <a href="https://www.tesla.com/vehicle-recalls">Vehicle Recalls</a>
+            <a href="https://www.tesla.com/contact">Contact</a>
+            <a href="https://www.tesla.com/blog">News</a>
+            <a href="https://www.tesla.com/updates">Get Updates</a>
+            <a href="https://www.tesla.com/findus">Locations</a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Account section switching
+            const menuLinks = document.querySelectorAll('.menu-link');
+            const contentSections = document.querySelectorAll('.content-section');
+            
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetSection = this.getAttribute('data-section');
+                    
+                    // Update active menu item
+                    menuLinks.forEach(item => item.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show corresponding section
+                    contentSections.forEach(section => {
+                        section.classList.remove('active');
+                    });
+                    document.getElementById(`${targetSection}-section`).classList.add('active');
+                });
+            });
+            
+            // Form submission
+            const forms = document.querySelectorAll('form');
+            forms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Your changes have been saved successfully!');
+                });
+            });
+            
+            // NAVBAR DROPDOWN DELAY LOGIC
+            const dropdownItem = document.querySelector('.dropdown-item');
+            const delay = 500; 
+            let dropdownTimer;
+
+            if (dropdownItem) {
+                dropdownItem.addEventListener('mouseenter', () => {
+                    clearTimeout(dropdownTimer); 
+                    dropdownTimer = setTimeout(() => {
+                        dropdownItem.classList.add('dropdown-open');
+                    }, delay);
+                });
+
+                dropdownItem.addEventListener('mouseleave', () => {
+                    clearTimeout(dropdownTimer);
+                    dropdownItem.classList.remove('dropdown-open');
+                });
+            }
+
+            // Mobile menu functionality 
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closeMenu = document.getElementById('close-menu');
+
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.add('open'); 
+                    document.body.style.overflow = 'hidden'; 
+                });
+            }
+
+            if (closeMenu && mobileMenu) {
+                closeMenu.addEventListener('click', () => {
+                    mobileMenu.classList.remove('open'); 
+                    document.body.style.overflow = 'auto'; 
+                });
+            }
+        });
+    </script>
+</body>
+</html>
